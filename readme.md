@@ -13,3 +13,5 @@ commands.
 If you don't have `devtools` install yet, you will need to first install it. 
 
     install.packages("devtools")
+	
+The package vignette is available [here](https://rpubs.com/chengvt/EEM).
