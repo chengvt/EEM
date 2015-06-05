@@ -17,7 +17,8 @@ Imports:
 Suggests:
 	stats,
 	pls,
-	knitr
+	knitr,
+	testthat
 VignetteBuilder: knitr
 License: GPL-3
 
