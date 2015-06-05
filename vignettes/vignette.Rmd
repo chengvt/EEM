@@ -10,6 +10,8 @@ opts_chunk$set(fig.width=6.5, fig.height=4)
 ```
 
 # Introduction to EEM package
+2015.06.05  
+Vipavee Trivittayasil (Cheng)
 
 ## Table of contents
 
