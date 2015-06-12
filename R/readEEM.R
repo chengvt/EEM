@@ -44,7 +44,7 @@ readEEM <-
         N = length(fileList)
         
         # stop if there is no file in the directory
-        if (N == 0) stop("There is no files provided or in the directory. Function aborted.")
+        if (N == 0) stop("There is no files in the directory. ")
         
         ## initialize output
         EEM <- list() # store each sample data in list format. call each one using EEM[[i]]    
