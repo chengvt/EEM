@@ -105,7 +105,9 @@ drawEEM.EEMweight <- function(x, ncomp,
     if (is.null(title)) {
         title <- x$title #if title is not provided, call it
         title <- paste(title, " (", ncomp, " LV)", sep = "")
-        if (ncomp > 1) title <- sub("LV", "LVs", title)
+        if (ncomp > 1 & x$title %in% "Regression coefficient") {
+            title <- sub("LV", "LVs", title)
+            }
     } 
     
     # plotting
