@@ -5,7 +5,7 @@
 \title{Plot score for prcomp result}
 \usage{
 plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, pointsize = 1.5,
-  label = NULL, pos = 4, col = NULL, pch = NULL,
+  label = NULL, pos = 4, col = NULL, pch = NULL, title = NULL,
   legendlocation = "bottomright", legendoutside = FALSE,
   rightwhitespace = 0, legendinset = 0, ...)
 }
@@ -30,6 +30,8 @@ to the left of, above and to the right of the specified coordinates.}
 \item{col}{point color}
 
 \item{pch}{point type}
+
+\item{title}{(optional) plot title}
 
 \item{legendlocation}{(optional)location of legend on graph.
 Look up \code{\link[graphics]{legend}} for more details.}

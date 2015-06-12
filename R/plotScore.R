@@ -22,6 +22,7 @@
 #' Only applicable if legendoutside = TRUE
 #' @param col point color
 #' @param pch point type
+#' @param title (optional) plot title
 #' @param ... additional arguments for \code{\link[graphics]{text}}
 #' 
 #' @return A figure is returned on the graphic device
@@ -54,6 +55,7 @@
 plotScore <-
 function(prcompResult, xPC = 1, yPC = 2, group = NULL,
          pointsize = 1.5, label = NULL, pos = 4, col = NULL, pch = NULL,
+         title = NULL,
          legendlocation = "bottomright",
          legendoutside = FALSE,
          rightwhitespace = 0,
@@ -90,7 +92,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     # prepare plotting information
     xLabel <- prcompname(prcompResult, xPC)
     yLabel <- prcompname(prcompResult, yPC)
-    title <- paste("PC ", xPC, " vs PC ", yPC, sep = "")
+    if (is.null(title)) title <- paste("PC ", xPC, " vs PC ", yPC, sep = "")
     
     # set plotting area when there is legend outside
     if (is.g & isTRUE(legendoutside)) {
