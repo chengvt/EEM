@@ -6,6 +6,13 @@
 #' 
 #' @return A matrix of normalized data
 #' 
+#' @details The unfolded EEM data can be normalized by dividing each variable by the 
+#' sum of the absolute value of all variables in a sample, such that the summation 
+#' of absolute values of all variables in each sample was equal to 1. This is 
+#' can be used to reduce the scaling difference,which is common in spectroscopic 
+#' applications. This difference is usually caused by the scattering effect, 
+#' source/detector variation and instrumental sensitivity.
+#' 
 #' @examples
 #' data(applejuice)
 #' applejuice_uf <- unfold(applejuice) # unfold list into matrix
