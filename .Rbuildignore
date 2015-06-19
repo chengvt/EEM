@@ -1,3 +1,5 @@
 .gitignore
 .Rhistory
 ^/\.gitattributes$
+vignettes/*.html
+vignettes/rsconnect
