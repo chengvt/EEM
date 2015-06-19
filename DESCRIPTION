@@ -5,7 +5,7 @@ Version: 0.6.2
 Date: 2015-06-05
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
-Description: read raw EEM data, create contours and prepare them for further analysis
+Description: This package reads raw EEM data and prepares them for further analysis.
 Imports:
 	tools,
 	reshape2,
