@@ -41,4 +41,24 @@ fold.matrix <- function(EEM_uf){
   names(EEM) <- sName
   class(EEM) <- "EEM"
   return(EEM)
-  }
+}
+
+#' @rdname fold
+#' @export
+fold.numeric <- function(EEM_uf){
+    
+    # information from EEM_uf
+    var <- names(EEM_uf)
+    ex <- as.numeric(substring(var, 3, 5))
+    em <- as.numeric(substring(var, 8, 10))
+    
+    # add data into list
+    EEM <- list()
+    data <- EEM_uf
+    dataFrame <- data.frame(x = ex, y = em, z = as.numeric(data))
+    EEM[[1]] <- as.data.frame(acast(dataFrame, y ~ x, value.var = "z"))
+    
+    # return 
+    class(EEM) <- "EEM"
+    return(EEM)
+}

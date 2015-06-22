@@ -3,11 +3,14 @@
 \name{fold}
 \alias{fold}
 \alias{fold.matrix}
+\alias{fold.numeric}
 \title{Fold EEM matrix into a list}
 \usage{
 fold(EEM_uf)
 
 \method{fold}{matrix}(EEM_uf)
+
+\method{fold}{numeric}(EEM_uf)
 }
 \arguments{
 \item{EEM_uf}{Unfolded EEM matrix where columns are wavelength condition and rows are samples.
