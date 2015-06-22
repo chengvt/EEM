@@ -24,7 +24,7 @@ fold.matrix <- function(EEM_uf){
     
   # information from EEM_uf
   sName <- rownames(EEM_uf)
-  N <- length(sName)
+  N <- dim(EEM_uf)[1]
   var <- colnames(EEM_uf)
   ex <- as.numeric(substring(var, 3, 5))
   em <- as.numeric(substring(var, 8, 10))
