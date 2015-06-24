@@ -8,6 +8,8 @@
 #' @param n number
 #' @param pch Either an integer specifying a symbol or a single character to be used as the default in plotting points.
 #' @inheritParams drawEEM
+#' @param string string or vector of strings
+#' @inheritParams base:::round
 #' 
 #' @details `generatePoint` and `generateColor` are used to create point and color 
 #' vector from specified number (n) and palette. 
@@ -22,6 +24,7 @@ generatePoint <- function(n, pch = NULL){
     pointType <- rep(pch, times)[1:n]
     return(pointType)
 }
+
 #' @describeIn EEM-misc
 #' @export
 generateColor <- function(n, color.palette = NULL){
@@ -33,4 +36,26 @@ generateColor <- function(n, color.palette = NULL){
     times <- (n %/% length(color.palette)) +1
     colorType <- rep(color.palette, times)[1:n]
     return(colorType)
+}
+
+#' @describeIn EEM-misc
+#' @export
+getEX <- function(string, digits = NULL){
+    pat <- "(EX)(.*)(EM)(.*)"
+    ex <- as.numeric(sub(pat, "\\2", string))
+    if (!is.null(digits)){
+        ex <- round(ex, digits)
+    }
+    return(ex)
+}
+
+#' @describeIn EEM-misc
+#' @export
+getEM <- function(string, digits = NULL){
+    pat <- "(EX)(.*)(EM)(.*)"
+    ex <- as.numeric(sub(pat, "\\4", string))
+    if (!is.null(digits)){
+        ex <- round(ex, digits)
+    }
+    return(ex)
 }

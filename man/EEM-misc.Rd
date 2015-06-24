@@ -4,11 +4,17 @@
 \alias{EEM-misc}
 \alias{generateColor}
 \alias{generatePoint}
+\alias{getEM}
+\alias{getEX}
 \title{Internal functions for EEM package}
 \usage{
 generatePoint(n, pch = NULL)
 
 generateColor(n, color.palette = NULL)
+
+getEX(string, digits = NULL)
+
+getEM(string, digits = NULL)
 }
 \arguments{
 \item{n}{number}
@@ -16,6 +22,12 @@ generateColor(n, color.palette = NULL)
 \item{pch}{Either an integer specifying a symbol or a single character to be used as the default in plotting points.}
 
 \item{color.palette}{(optional) contour color palette. See \code{\link[grDevices]{palette}} for more details}
+
+\item{string}{string or vector of strings}
+
+\item{digits}{integer indicating the number of decimal places
+    (\code{round}) or significant digits (\code{signif}) to be used.
+    Negative values are allowed (see \sQuote{Details}).}
 }
 \description{
 Internal functions for EEM package
@@ -27,5 +39,9 @@ vector from specified number (n) and palette.
 \section{Functions}{
 \itemize{
 \item \code{generateColor}: 
+
+\item \code{getEX}: 
+
+\item \code{getEM}: 
 }}
 
