@@ -26,6 +26,12 @@ unfold.EEM <-
     if (sum(!apply(dimMat, 2, function (x) identical(dimMat[,1], x))) > 0){
       stop("Dimension do not match. Please check your data.")
     }
+    
+    ## check that EX and EM wavelength are identical for all samples
+    dimension_names <- lapply(EEM, dimnames)
+    if (sum(!sapply(dimension_names, function (x) identical(dimension_names[[1]], x))) > 0){
+        stop("Dimension names do not match. Please check your data.")
+    }
 
     # get sName
     sName <- names(EEM)
