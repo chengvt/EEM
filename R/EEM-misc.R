@@ -41,7 +41,7 @@ generateColor <- function(n, color.palette = NULL){
 #' @describeIn EEM-misc
 #' @export
 getEX <- function(string, digits = NULL){
-    pat <- "(EX)(.*)(EM)(.*)"
+    pat <- "(EX|.*EX)(.*)(EM)(.*)"
     ex <- as.numeric(sub(pat, "\\2", string))
     if (!is.null(digits)){
         ex <- round(ex, digits)
@@ -52,7 +52,7 @@ getEX <- function(string, digits = NULL){
 #' @describeIn EEM-misc
 #' @export
 getEM <- function(string, digits = NULL){
-    pat <- "(EX)(.*)(EM)(.*)"
+    pat <- "(EX|.*EX)(.*)(EM)(.*)"
     ex <- as.numeric(sub(pat, "\\4", string))
     if (!is.null(digits)){
         ex <- round(ex, digits)
