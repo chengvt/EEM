@@ -79,18 +79,10 @@ drawEEM.EEMweight <- function(x, ncomp,
     value <- x$value[,ncomp]
     id <- rownames(x$value)
     
-    # check if ID follow EX???EM??? format
-    if (isTRUE(grepl("^EX...EM...", id[1]))){
-        EX <- substring(id, 3, 5)
-        EM <- substring(id, 8, 10)
-    } else {
-        pattern <- "EX...EM..."
-        m <- regexpr(pattern, id)
-        id <- regmatches(id, m)
-        EX <- substring(id, 3, 5)
-        EM <- substring(id, 8, 10)
-    }
-    
+    # get EX and EM
+    EX <- getEX(id)
+    EM <- getEM(id)
+
     data <- data.frame(ex = as.numeric(EX), em = as.numeric(EM), value = value)
     
     # cast data

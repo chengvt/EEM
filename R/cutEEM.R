@@ -76,16 +76,10 @@ cutEEM.EEMweight <- function(x, cutEX = NULL, cutEM = NULL){
     # get value 
     title <- x$title
     EEM <- x$value
-    
-    # check that the format is correct, as in the variable name is there
-    varnames <- rownames(x)
-    if (!isTRUE(grepl("EX...EM...", varnames[1]))) {
-        stop("The column name did not contain EX...EM... format.")
-    }
-    
+
     # prepare data
-    EX <- as.numeric(gsub("(^.*EX)(.*)(EM.*$)", "\\2", varnames))
-    EM <- as.numeric(gsub("(^.*EX.*EM)(.*$)", "\\2", varnames))
+    EX <- getEX(varnames)
+    EM <- getEM(varnames)
     
     # check that it cannot cut through the middle
     # for EX
