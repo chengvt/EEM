@@ -35,7 +35,7 @@ drawEEM <- function(x, ...) UseMethod("drawEEM", x)
 #' @describeIn drawEEM draw contour of EEM data created by \code{\link{readEEM}} function
 #' @export
 drawEEM.EEM <-
-  function(x, n, xlab = "EX [nm]", ylab = "EM [nm]", 
+  function(x, n, xlab = "Excitation wavelength [nm]", ylab = "Emission wavelength [nm]", 
            color.palette = matlab.like, nlevels = 50, title = NULL, ...){
     
     # check number of argument
@@ -62,7 +62,7 @@ drawEEM.EEM <-
 #' \code{\link[EEM]{getReg}}. 
 #' @export
 drawEEM.EEMweight <- function(x, ncomp, 
-                       xlab = "EX [nm]", ylab = "EM [nm]", 
+                       xlab = "Excitation wavelength [nm]", ylab = "Emission wavelength [nm]", 
                        color.palette = matlab.like, nlevels = 50, title = NULL,
                        ...){
     
@@ -114,7 +114,7 @@ drawEEM.EEMweight <- function(x, ncomp,
 #' excitation wavelength and rows being emission wavelength
 #' @export
 drawEEM.matrix <-
-    function(x, xlab = "EX [nm]", ylab = "EM [nm]", 
+    function(x, xlab = "Excitation wavelength [nm]", ylab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, title = NULL, ...){
             
         # get information from EEM
@@ -133,7 +133,7 @@ drawEEM.matrix <-
 #' excitation wavelength and rows being emission wavelength
 #' @export
 drawEEM.data.frame <-
-    function(x, xlab = "EX [nm]", ylab = "EM [nm]", 
+    function(x, xlab = "Excitation wavelength [nm]", ylab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, title = NULL, ...){
         x <- as.matrix(x)
         drawEEM.matrix(x, ...)
