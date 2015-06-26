@@ -78,6 +78,7 @@ cutEEM.EEMweight <- function(x, cutEX = NULL, cutEM = NULL){
     EEM <- x$value
 
     # prepare data
+    varnames <- rownames(x)
     EX <- getEX(varnames)
     EM <- getEM(varnames)
     
