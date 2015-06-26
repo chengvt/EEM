@@ -117,6 +117,17 @@ readSingleEEM <- function(file){
         # for txt or csv files
         data_noRowNames <- read.delim(file, sep = SEP, skip = index, 
                                       check.names = FALSE, row.names = NULL)
+        
+        # check if comma-delimited file was camouflaged as txt file
+        if (fileExtension == "txt"){
+            test <- read.delim(file, sep = ",", skip = index, 
+                               check.names = FALSE, row.names = NULL)
+            # replace data_noRowNames with test if test contains more columns
+            if (dim(data_noRowNames)[2] < dim(test)[2]) {
+                data_noRowNames <- test
+            }
+        }
+        
     }
     
     # delete NA rows if present
