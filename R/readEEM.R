@@ -130,17 +130,19 @@ readSingleEEM <- function(file){
         
     }
     
-    # delete NA rows if present
-    NA_rows <- which(is.na(data_noRowNames[,1])|data_noRowNames[,1] %in% "")
-    if (length(NA_rows) > 0) data_noRowNames <- data_noRowNames[-NA_rows,]
-    
-    # delete NA columns if present
-    NA_col <- which(is.na(colnames(data_noRowNames))|colnames(data_noRowNames) %in% "")
-    if (length(NA_col) > 0) data_noRowNames <- data_noRowNames[,-NA_col]
-    
+
     # output
     data <- as.matrix(data.frame(c(data_noRowNames[,-1]), 
                                  row.names = data_noRowNames[,1], 
-                                 check.names = FALSE))    
+                                 check.names = FALSE)) 
+    
+    # delete NA or blank rows if present
+    NA_rows <- which(is.na(data[,1])|data[,1] %in% "")
+    if (length(NA_rows) > 0) data <- data[-NA_rows,]
+    
+    # delete NA or blank columns if present
+    NA_col <- which(is.na(colnames(data))|colnames(data) %in% "")
+    if (length(NA_col) > 0) data <- data[,-NA_col]
+    
     return(data)
 }
