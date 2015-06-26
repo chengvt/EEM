@@ -7,7 +7,7 @@
 #' 
 #' @return \code{readEEM} returns a list containing each raw files
 #' 
-#' @details The supported format is outputs from FP8500 (JASCO) and F7000 (Hitachi Hi-tech) fluorescence spectrometer. 
+#' @details The supported format is outputs from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech) and RF-6000 (Shimadzu) fluorescence spectrometer. 
 #' It is likely that outputs from different machines of the same companies are supported by this function.
 #' Please send a word or pull request to add support for other formats. 
 #' 
@@ -98,7 +98,8 @@ readSingleEEM <- function(file){
     # find the line index that contains either of the following word
     # FP-8500 file: "XYData"
     # F-7000 file: "Data Points" or "Data list (in Japanese)"
-    pattern <- "Data Points|XYDATA|<ef><be><83><ef><be><9e><ef><bd><b0><ef><be><80><ef><be><98><ef><bd><bd><ef><be><84>"
+    # R-7000 file: "RawData"
+    pattern <- "Data Points|XYDATA|<ef><be><83><ef><be><9e><ef><bd><b0><ef><be><80><ef><be><98><ef><bd><bd><ef><be><84>|RawData"
     index <- grep(pattern, tmpData, ignore.case = TRUE)
     if (length(index) == 0) {
         warning(paste("'", basename(file), "' does not have the right format. So it will not be read. 

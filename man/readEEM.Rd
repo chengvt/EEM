@@ -17,7 +17,7 @@ For windows platform, if left blank will bring up an interactive directory choos
 Read raw files from fluorescence spectrometer
 }
 \details{
-The supported format is outputs from FP8500 (JASCO) and F7000 (Hitachi Hi-tech) fluorescence spectrometer.
+The supported format is outputs from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech) and RF-6000 (Shimadzu) fluorescence spectrometer.
 It is likely that outputs from different machines of the same companies are supported by this function.
 Please send a word or pull request to add support for other formats.
 }
