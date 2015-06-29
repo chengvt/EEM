@@ -33,11 +33,13 @@ Plot score matrix for \code{\link[stats]{prcomp}} (PCA) result based on group
 }
 \examples{
 data(applejuice)
-country <- sapply(strsplit(names(applejuice), split = "-"), "[", 1) # country of apple production
+# country of apple production
+country <- sapply(strsplit(names(applejuice), split = "-"), "[", 1)
 
 applejuice_uf <- unfold(applejuice) # unfold list into matrix
 result <- prcomp(applejuice_uf)
-plotScorem(result, ncomp = 4, group = country) # plot PC1 vs PC3 score based on country of production
+# plot PC1 vs PC3 score based on country of production
+plotScorem(result, ncomp = 4, group = country)
 
 # specify colours
 plotScorem(result, ncomp = 4, group = country, col = c("black", "grey"))
