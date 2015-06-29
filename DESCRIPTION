@@ -5,7 +5,7 @@ Version: 0.6.2
 Date: 2015-06-05
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
-Description: reads raw EEM data and prepares them for further analysis.
+Description: Read raw EEM data and prepares them for further analysis.
 Imports:
 	tools,
 	reshape2,
