@@ -99,7 +99,7 @@ readSingleEEM <- function(file){
     # FP-8500 file: "XYData"
     # F-7000 file: "Data Points" or "Data list (in Japanese)"
     # R-7000 file: "RawData"
-    pattern <- "Data Points|XYDATA|<ef><be><83><ef><be><9e><ef><bd><b0><ef><be><80><ef><be><98><ef><bd><bd><ef><be><84>|RawData"
+    pattern <- "Data Points|XYDATA|<ef><be><83><ef><be><9e><ef><bd><b0><ef><be><80><ef><be><98><ef><bd><bd><ef><be><84>|RawData|CorrectionData"
     index <- grep(pattern, tmpData, ignore.case = TRUE)
     if (length(index) == 0) {
         warning(paste("'", basename(file), "' does not have the right format. So it will not be read. 
