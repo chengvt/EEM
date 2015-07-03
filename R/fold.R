@@ -34,7 +34,7 @@ fold.matrix <- function(EEM_uf){
   for (i in 1:N){
     data <- EEM_uf[i,]
     dataFrame <- data.frame(x = ex, y = em, z = as.numeric(data))
-    EEM[[i]] <- as.data.frame(acast(dataFrame, y ~ x, value.var = "z"))
+    EEM[[i]] <- as.matrix(acast(dataFrame, y ~ x, value.var = "z"))
   }
     
   # return 
@@ -56,7 +56,7 @@ fold.numeric <- function(EEM_uf){
     EEM <- list()
     data <- EEM_uf
     dataFrame <- data.frame(x = ex, y = em, z = as.numeric(data))
-    EEM[[1]] <- as.data.frame(acast(dataFrame, y ~ x, value.var = "z"))
+    EEM[[1]] <- as.matrix(acast(dataFrame, y ~ x, value.var = "z"))
     
     # return 
     class(EEM) <- "EEM"
