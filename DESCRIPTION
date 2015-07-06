@@ -6,6 +6,7 @@ Date: 2015-06-05
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
 Description: Read raw EEM data and prepares them for further analysis.
+Depends: R (>= 3.0.0)
 Imports:
 	tools,
 	reshape2,
