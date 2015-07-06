@@ -141,9 +141,6 @@ readSingleEEM <- function(file){
                                  row.names = as.numeric(data_noRowNames[,1]), 
                                  check.names = FALSE)) 
     
-    # make column names into numeric
-    colnames(data) <- as.numeric(colnames(data))
-    
     # delete NA or blank rows if present
     NA_rows <- which(is.na(data[,1])|data[,1] %in% "")
     if (length(NA_rows) > 0) data <- data[-NA_rows,]
@@ -151,6 +148,9 @@ readSingleEEM <- function(file){
     # delete NA or blank columns if present
     NA_col <- which(is.na(colnames(data))|colnames(data) %in% ""|grepl("NA", colnames(data)))
     if (length(NA_col) > 0) data <- data[,-NA_col]
+
+    # make column names into numeric
+    colnames(data) <- as.numeric(colnames(data))
     
     # transpose data if required
     if (toTranspose) data <- t(data)
