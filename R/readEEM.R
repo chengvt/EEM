@@ -135,12 +135,14 @@ readSingleEEM <- function(file){
         }
         
     }
-    
 
     # output
     data <- as.matrix(data.frame(c(data_noRowNames[,-1]), 
-                                 row.names = data_noRowNames[,1], 
+                                 row.names = as.numeric(data_noRowNames[,1]), 
                                  check.names = FALSE)) 
+    
+    # make column names into numeric
+    colnames(data) <- as.numeric(colnames(data))
     
     # delete NA or blank rows if present
     NA_rows <- which(is.na(data[,1])|data[,1] %in% "")
