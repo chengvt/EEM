@@ -95,7 +95,7 @@ readSingleEEM <- function(file){
     if (sum(grepl("UTF-8|unknown", sapply(tmpData, Encoding))) > 0) isASCII = TRUE
     if (isASCII) tmpData <- sapply(tmpData, iconv, from = "UTF-8", to = "ASCII", sub = "byte")
     
-    # check for "励起波長/蛍光波長" (Shimadzu), if present transpose
+    # check for "EX/EM" (Shimadzu), if present transpose
     if (length(grep("<97><e3><8b>N<94>g<92><b7>/<8c>u<8c><f5><94>g<92><b7>", tmpData)) > 0) {
         toTranspose <- TRUE
     } else toTranspose <- FALSE
@@ -150,7 +150,7 @@ readSingleEEM <- function(file){
     NA_col <- which(is.na(colnames(data))|colnames(data) %in% ""|grepl("NA", colnames(data)))
     if (length(NA_col) > 0) data <- data[,-NA_col]
     
-    # transpose data if "励起波長/蛍光波長" is present
+    # transpose data if required
     if (toTranspose) data <- t(data)
     
     return(data)
