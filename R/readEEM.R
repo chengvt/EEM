@@ -95,21 +95,22 @@ readSingleEEM <- function(file){
     if (sum(grepl("UTF-8|unknown", sapply(tmpData, Encoding))) > 0) isASCII = TRUE
     if (isASCII) tmpData <- sapply(tmpData, iconv, from = "UTF-8", to = "ASCII", sub = "byte")
     
-    # check for "励起波長/蛍光波長" (Shimadzu)
+    # check for "励起波長/蛍光波長" (Shimadzu), if present transpose
     if (length(grep("<97><e3><8b>N<94>g<92><b7>/<8c>u<8c><f5><94>g<92><b7>", tmpData)) > 0) {
         toTranspose <- TRUE
     } else toTranspose <- FALSE
     
     # find the line index that contains either of the following word
-    # FP-8500 file: "XYData"
+    pat_FP8500 <- "XYDATA" # FP-8500 file: "XYData"
     # F-7000 file: "Data Points" or "Data list (in Japanese)"
-    # R-7000 file: "RawData"
-    pattern <- "Data Points|XYDATA|<ef><be><83><ef><be><9e><ef><bd><b0><ef><be><80><ef><be><98><ef><bd><bd><ef><be><84>|<c3><de><b0><c0><d8><bd><c4>|RawData|CorrectionData"
+    pat_F7000 <- "Data Points"
+    pat_F7000_J_xls <- "<ef><be><83><ef><be><9e><ef><bd><b0><ef><be><80><ef><be><98><ef><bd><bd><ef><be><84>"
+    pat_F7000_J_txt <- "<c3><de><b0><c0><d8><bd><c4>"
+    pat_RF6000 <- "RawData|CorrectionData"
+    pattern <- paste(pat_FP8500, pat_F7000, pat_F7000_J_xls, pat_F7000_J_txt, pat_RF6000, sep = "|")
     index <- grep(pattern, tmpData, ignore.case = TRUE)
     if (length(index) == 0) {
-        warning(paste("'", basename(file), "' does not have the right format. So it will not be read. 
-                      (Note: the right format = they contain the words 'Data Points' or 'XYDATA')",
-                      sep = ""))
+        warning(paste0("'", basename(file), "' does not have the right format. So it will not be read."))
         data <- "DO NOT READ"
         return(data)
     }
