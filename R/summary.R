@@ -57,7 +57,7 @@ summary.EEM <-
         if (dimN == 1) {
             writeLines(paste0("EM range: ", unique_EM_range[1], "~", unique_EM_range[2], " [nm]"))
         } else {
-            writeLines("EX range: ")
+            writeLines("EM range: ")
             for (i in 1:dim_EM_range) {
                 writeLines(paste0("[", i, "] ", unique_EM_range[i, 1], "~", unique_EM_range[i, 2]))
             }
