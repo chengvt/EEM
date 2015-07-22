@@ -66,17 +66,33 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     
     # get information from prcompResult
     score <- prcompResult$x
+    numSample <- dim(score)[1]
     
     # check validity of group 
     if (is.g) {
-        if (length(group) != dim(score)[1]) {
+        
+        # check length
+        if (length(group) %% numSample != 0) {
         stop("The dimension of group and sample do not match. 
            Please check your group variable.")
         }
+        
+        # check if two different groups were provided
+        if (length(group) / numSample == 2) {
+            group2 <- group[(numSample+1):(numSample*2)]
+            group <- group[1:numSample]
+            twogroup <- TRUE
+        }    else { 
+            twogroup <- FALSE 
+        }
+                
+        # turn into factor if it isn't already
         if (!is.factor(group) & is.null(attributes(group))) {
-            group <- unclass(as.factor(group)) 
+            group <- unclass(as.factor(group))
+            if (twogroup) group2 <- unclass(as.factor(group2))             
         }
         numLevels <- nlevels(group)
+        if (twogroup) numLevels2 <- nlevels(group2)
     } else {
         # if no group is provided, that means there is only one group
         group <- 1
@@ -85,9 +101,16 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     
     # color and point type base on group
     col.palette <- generateColor(numLevels, if (!is.null(col))col)
-    pch.palette <- generatePoint(numLevels, if (!is.null(pch))pch)
     col <- col.palette[group]
-    pch <- pch.palette[group]
+    
+    # if twogroups are present assign pch to group2 instead
+    if (twogroup){    
+        pch.palette <- generatePoint(numLevels2, if (!is.null(pch))pch)
+        pch <- pch.palette[group2]
+    } else {
+        pch.palette <- generatePoint(numLevels, if (!is.null(pch))pch)
+        pch <- pch.palette[group]
+    }
     
     # prepare plotting information
     xLabel <- prcompname(prcompResult, xPC)
@@ -120,23 +143,42 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     
     # legend for is.g
     if (is.g){
-        # add legend
+        # turn unclassed factor back 
         if (!is.null(attributes(group))) {
-            group <- levels(group) # turn unclassed factor back
+            group <- levels(group) 
+            if (twogroup) group2 <- levels(group2)
         }
         
         # plot legend inside or outside
-        if (isTRUE(legendoutside)){
+        if (legendoutside){
             # plot legend outside
             # legendlocation will be overwritten if provided
-            legend("topright", inset = c(-0.3-legendinset, 0), 
-                   legend = as.vector(group), pch = pch.palette,
-                   pt.cex = pointsize, col = col.palette, 
-                   xpd=TRUE)
+            if (!twogroup) {
+                legend("topright", inset = c(-0.3-legendinset, 0), 
+                       legend = as.vector(group), pch = pch.palette,
+                       pt.cex = pointsize, col = col.palette, 
+                       xpd=TRUE)
+            } else {
+                group <- c(group, NA, group2)
+                col.palette <- c(col.palette, NA, rep("black", numLevels2))
+                pch.palette <- c(rep(15, numLevels), NA, pch.palette)
+                legend("topright", inset = c(-0.3-legendinset, 0), 
+                       legend = as.vector(group), pch = pch.palette,
+                       pt.cex = pointsize, col = col.palette, 
+                       xpd=TRUE)
+            }
+ 
             # reset mar 
             par(mar = c(5.1, 4.1, 4.1, 2.1))
+            
         } else {
             # plot legend inside
+            if (twogroup){ 
+                group <- c(group, NA, group2)
+                col.palette <- c(col.palette, NA, rep("black", numLevels2))
+                pch.palette <- c(rep(15, numLevels), NA, pch.palette)
+            }
+            
             legend(legendlocation, legend = as.vector(group), pch = pch.palette,
                    pt.cex = pointsize, col = col.palette, 
                    xpd = TRUE)
