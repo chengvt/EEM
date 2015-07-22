@@ -17,7 +17,8 @@ plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, pointsize = 1.5,
 \item{yPC}{an integer indicating PC component on y-axis}
 
 \item{group}{variable of numeric, character or factor class separating
-the samples into groups.}
+the samples into groups. Able to accept up to two groups which can be stated by
+group = c(group1, group2)}
 
 \item{pointsize}{(optional) size of points on graphs}
 

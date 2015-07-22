@@ -5,6 +5,8 @@
 #' @inheritParams plotScore
 #' @param ncomp maximum number of PC score to plot
 #' @param legendtitle legend title
+#' @param group variable of numeric, character or factor class separating 
+#' the samples into groups.
 #' @param ... additional arguments to be passed on to \code{\link[graphics]{pairs}} 
 #' 
 #' @return A figure is returned on the graphic device
