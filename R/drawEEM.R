@@ -11,7 +11,7 @@
 #' @param color.palette (optional) contour color palette. See \code{\link[grDevices]{palette}} for more details
 #' @param nlevels (optional) number of levels used to separate range of intensity value
 #' @param title (optional) plot title
-#' @param ... (optional) further arguments passed to other methods or \code{\link[graphics]{filled.contour}} 
+#' @param ... (optional) further arguments passed to other methods of \code{\link[graphics]{filled.contour}} 
 #' 
 #' @return A figure is returned on the graphic device
 #' 
