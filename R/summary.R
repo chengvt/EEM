@@ -38,7 +38,7 @@ summary.EEM <-
         }
         
         # EX range
-        EX_range <- sapply(object, function(x) range(as.numeric(rownames(x))))
+        EX_range <- sapply(object, function(x) range(as.numeric(colnames(x))))
         unique_EX_range <- unique(t(EX_range))
         dim_EX_range <- nrow(unique_EX_range)
         if (dimN == 1) {
@@ -51,7 +51,7 @@ summary.EEM <-
         }
         
         # EM range
-        EM_range <- sapply(object, function(x) range(as.numeric(colnames(x))))
+        EM_range <- sapply(object, function(x) range(as.numeric(rownames(x))))
         unique_EM_range <- unique(t(EM_range))
         dim_EM_range <- nrow(unique_EM_range)
         if (dimN == 1) {
