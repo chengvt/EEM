@@ -11,7 +11,8 @@
 #' any adj value given. Values of 1, 2, 3 and 4, respectively indicate positions below, 
 #' to the left of, above and to the right of the specified coordinates.
 #' @param group variable of numeric, character or factor class separating 
-#' the samples into groups. 
+#' the samples into groups. Able to accept up to two groups which can be stated by
+#' group = c(group1, group2)
 #' @param legendlocation (optional)location of legend on graph. 
 #' Look up \code{\link[graphics]{legend}} for more details.
 #' @param legendoutside (optional) set to TRUE if you want to put legend on 
