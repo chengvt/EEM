@@ -14,7 +14,8 @@ Imports:
 	colorRamps,
 	utils,
 	readxl,
-	R.utils
+	R.utils,
+	sp
 Suggests:
 	stats,
 	pls,
