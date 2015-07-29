@@ -64,6 +64,8 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     
     # check if group information is provided
     is.g <- !is.null(group)
+    # assign false to twogroup if is.g == FALSE
+    if (!is.g) twogroup <- FALSE 
     
     # get information from prcompResult
     score <- prcompResult$x
@@ -83,7 +85,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
             group2 <- group[(numSample+1):(numSample*2)]
             group <- group[1:numSample]
             twogroup <- TRUE
-        }    else { 
+        } else { 
             twogroup <- FALSE 
         }
                 
