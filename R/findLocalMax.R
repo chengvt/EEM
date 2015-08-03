@@ -91,3 +91,20 @@ findLocalMax.data.frame <- function(data, threshold = 0.7){
     local_max <- findLocalMax.matrix(data, threshold = threshold)
     return(local_max)
 }
+
+#' @describeIn findLocalMax for a vector of numeric values which have names in 
+#' the format of EX...EM...
+#' @export
+findLocalMax.numeric <- function(data, threshold = 0.7){
+
+    # convert data to matrix form
+    name <- names(data)
+    EX <- getEX(name)
+    EM <- getEM(name)
+    data <- data.frame(ex = as.numeric(EX), em = as.numeric(EM), value = x)
+    data.casted <- acast(data, em ~ ex, value.var = "value")
+    
+    # calculate for regional max
+    local_max <- findLocalMax.matrix(data.casted, threshold = threshold)
+    return(local_max)
+}
