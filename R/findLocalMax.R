@@ -27,7 +27,7 @@ findLocalMax <- function(EEM, n, threshold = 0.7){
         x <- as.numeric(colnames(data)) # EX
         y <- as.numeric(rownames(data)) # EM
         z <- t(as.matrix(data))
-        cLine <- contourLines(x, y, z, nlevels = 10) 
+        cLine <- contourLines(x, y, z, nlevels = 100) 
         
         # melt z
         z_melted <- melt(z)
@@ -49,9 +49,14 @@ findLocalMax <- function(EEM, n, threshold = 0.7){
             pol.x <- as.numeric(sapply(pol, function(x) x$x))
             pol.y <- as.numeric(sapply(pol, function(x) x$y))
             index <- point.in.polygon(z_melted$EX, z_melted$EM, pol.x, pol.y) > 0
-            MAX <- max(z_melted$value[index])
-            MAX.index <- which(z_melted$value == MAX)
-            local_max[i,] <- z_melted[MAX.index,]
+            if (sum(index) == 0){ 
+                # when there is no real point within polygon, give NA value
+                local_max[i,] <- NA
+            } else {
+                MAX <- max(z_melted$value[index])
+                MAX.index <- which(z_melted$value == MAX)
+                local_max[i,] <- z_melted[MAX.index,]
+            }
         }
         row.names(local_max) <- NULL
         return(local_max)
