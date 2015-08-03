@@ -136,5 +136,24 @@ drawEEM.data.frame <-
     function(x, xlab = "Excitation wavelength [nm]", ylab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, title = NULL, ...){
         x <- as.matrix(x)
-        drawEEM.matrix(x, ...)
+        drawEEM.matrix(x, xlab = xlab, ylab = ylab, color.palette = color.palette,
+                       nlevels = nlevels, title = title, ...)
+    }
+
+#' @describeIn drawEEM draw contour of a vector of numeric values which have names in 
+#' the format of EX...EM...
+#' @export
+drawEEM.numeric <-
+    function(x, xlab = "Excitation wavelength [nm]", ylab = "Emission wavelength [nm]", 
+             color.palette = matlab.like, nlevels = 50, title = NULL, ...){
+        
+        # convert data to matrix form
+        name <- names(x)
+        EX <- getEX(name)
+        EM <- getEM(name)
+        data <- data.frame(ex = as.numeric(EX), em = as.numeric(EM), value = x)
+        data.casted <- acast(data, em ~ ex, value.var = "value")
+        
+        drawEEM.matrix(data.casted, xlab = xlab, ylab = ylab, color.palette = color.palette,
+                       nlevels = nlevels, title = title, ...)
     }

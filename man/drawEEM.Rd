@@ -6,6 +6,7 @@
 \alias{drawEEM.EEMweight}
 \alias{drawEEM.data.frame}
 \alias{drawEEM.matrix}
+\alias{drawEEM.numeric}
 \title{Draw contour for EEM data}
 \usage{
 drawEEM(x, ...)
@@ -23,6 +24,10 @@ drawEEM(x, ...)
   nlevels = 50, title = NULL, ...)
 
 \method{drawEEM}{data.frame}(x, xlab = "Excitation wavelength [nm]",
+  ylab = "Emission wavelength [nm]", color.palette = matlab.like,
+  nlevels = 50, title = NULL, ...)
+
+\method{drawEEM}{numeric}(x, xlab = "Excitation wavelength [nm]",
   ylab = "Emission wavelength [nm]", color.palette = matlab.like,
   nlevels = 50, title = NULL, ...)
 }
@@ -64,6 +69,9 @@ excitation wavelength and rows being emission wavelength
 
 \item \code{data.frame}: draw contour of a data frame with columns being
 excitation wavelength and rows being emission wavelength
+
+\item \code{numeric}: draw contour of a vector of numeric values which have names in
+the format of EX...EM...
 }}
 \examples{
 # method for class "EEM"
