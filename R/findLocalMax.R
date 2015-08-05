@@ -6,6 +6,7 @@
 #' columns = excitation and rows = emission wavelengths.
 #' @param n sample number. The number should not exceed \code{length(EEM)}.
 #' @param threshold threshold value ranging from 0 ~ 1. Lower the value to cover low peaks.
+#' @param ... (optional) further arguments passed to other methods
 #' 
 #' @return A dataframe of local maximum peaks
 #' 
