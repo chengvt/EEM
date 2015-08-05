@@ -12,6 +12,7 @@
 #' 
 #' @export
 #' 
+#' @importFrom utils read.delim
 #' @importFrom tools file_ext file_path_sans_ext
 #' @importFrom readxl read_excel
 #' @importFrom R.utils isDirectory isFile

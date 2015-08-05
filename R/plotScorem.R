@@ -27,6 +27,8 @@
 #' # specify colours
 #' plotScorem(result, ncomp = 4, group = country, col = c("black", "grey"))
 #' 
+#' @importFrom graphics abline legend pairs par plot points text
+#' 
 #' @export
 #' 
 plotScorem <-
