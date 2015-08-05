@@ -101,7 +101,7 @@ findLocalMax.numeric <- function(data, threshold = 0.7){
     name <- names(data)
     EX <- getEX(name)
     EM <- getEM(name)
-    data <- data.frame(ex = as.numeric(EX), em = as.numeric(EM), value = x)
+    data <- data.frame(ex = as.numeric(EX), em = as.numeric(EM), value = data)
     data.casted <- acast(data, em ~ ex, value.var = "value")
     
     # calculate for regional max
