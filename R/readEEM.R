@@ -3,7 +3,6 @@
 #' Read raw files from fluorescence spectrometer
 #' 
 #' @param pathname path to the files or folders which contains raw files (accept a vector). 
-#' For windows platform, if left blank will bring up an interactive directory chooser. 
 #' 
 #' @return \code{readEEM} returns a list containing each raw files
 #' 
@@ -13,23 +12,13 @@
 #' 
 #' @export
 #' 
-#' @importFrom utils choose.dir
 #' @importFrom tools file_ext file_path_sans_ext
 #' @importFrom readxl read_excel
 #' @importFrom R.utils isDirectory isFile
 readEEM <-
     function(pathname = NULL){
         
-        ## if no input is provided, bring up interactive folder chooser (only work for windows now)
-        if(.Platform$OS.type == "windows") {
-            if (nargs() == 0) {
-                pathname <- choose.dir()
-                if (is.na(pathname)) stop("No directory has been selected.")
-            }
-        } else {
-            # for other OS
-            if (nargs() == 0) stop("No directory has been selected.")
-        }
+        if (nargs() == 0) stop("Folder or file has not been specified.")
         
         # if file names are provided, use them
         if (all(isFile(pathname))) fileList <- pathname

@@ -7,8 +7,7 @@
 readEEM(pathname = NULL)
 }
 \arguments{
-\item{pathname}{path to the files or folders which contains raw files (accept a vector).
-For windows platform, if left blank will bring up an interactive directory chooser.}
+\item{pathname}{path to the files or folders which contains raw files (accept a vector).}
 }
 \value{
 \code{readEEM} returns a list containing each raw files
