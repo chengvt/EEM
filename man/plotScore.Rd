@@ -46,7 +46,7 @@ Only applicable if legendoutside = TRUE}
 \item{legendinset}{(optional) how much legend box will be pushed to the right.
 Only applicable if legendoutside = TRUE}
 
-\item{...}{additional arguments for \code{\link[graphics]{text}}}
+\item{...}{additional arguments for \code{\link[graphics]{par}}}
 }
 \value{
 A figure is returned on the graphic device

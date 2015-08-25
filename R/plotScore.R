@@ -24,7 +24,7 @@
 #' @param col point color
 #' @param pch point type
 #' @param title (optional) plot title
-#' @param ... additional arguments for \code{\link[graphics]{text}}
+#' @param ... additional arguments for \code{\link[graphics]{par}}
 #' 
 #' @return A figure is returned on the graphic device
 #' 
@@ -128,7 +128,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     
     # plot
     plot(score[, xPC], score[, yPC], xlab = xLabel, ylab = yLabel,
-         main = title, cex = pointsize, col = col, pch = pch)
+         main = title, cex = pointsize, col = col, pch = pch, ...)
     
     abline(v = 0, h = 0, lty = 2, col = "grey39")
     
@@ -141,7 +141,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
              Please check your label variable.")
         }
         text(score[, xPC], score[, yPC], labels = label,
-             pos = pos, ...)
+             pos = pos)
     }
     
     # legend for is.g
