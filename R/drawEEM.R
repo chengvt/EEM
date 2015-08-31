@@ -42,6 +42,12 @@ drawEEM.EEM <-
     # check number of argument
     if (nargs() < 2) stop("Not enough inputs. Aborted")
     
+      
+    # if main is not provided
+    if (is.null(main)) {
+      main <- names(x)[n] # if main is not provided, call it   
+    }
+      
     # get information from EEM
     data <- x[[n]]
     xlab <- exlab
@@ -51,17 +57,12 @@ drawEEM.EEM <-
       xlab <- emlab
       ylab <- exlab
     }
-    x <- as.numeric(colnames(data)) 
-    y <- as.numeric(rownames(data)) 
-    z <- t(as.matrix(data))
-    
-    # if main is not provided
-    if (is.null(main)) {
-        main <- names(x)[n] # if main is not provided, call it   
-    }
-    
+    X <- as.numeric(colnames(data)) 
+    Y <- as.numeric(rownames(data)) 
+    Z <- t(as.matrix(data))
+
     # draw contour
-    filled.contour(x, y, z, xlab = xlab, ylab = ylab, 
+    filled.contour(X, Y, Z, xlab = xlab, ylab = ylab, 
                    color.palette = color.palette, 
                    main = main, nlevels = nlevels, ...) 
   }
@@ -114,12 +115,12 @@ drawEEM.EEMweight <- function(x, ncomp,
         xlab <- emlab
         ylab <- exlab
     }
-    x <- as.numeric(colnames(castedData))
-    y <- as.numeric(rownames(castedData)) 
-    z <- t(as.matrix(castedData))
+    X <- as.numeric(colnames(castedData))
+    Y <- as.numeric(rownames(castedData)) 
+    Z <- t(as.matrix(castedData))
     
     # plotting
-    filled.contour(x, y, z, xlab = xlab, ylab = ylab, 
+    filled.contour(X, Y, Z, xlab = xlab, ylab = ylab, 
                    color.palette = color.palette, 
                    nlevels = nlevels, main = main, ...    
     ) 
@@ -141,12 +142,12 @@ drawEEM.matrix <-
             xlab <- emlab
             ylab <- exlab
         }
-        x <- as.numeric(colnames(data)) 
-        y <- as.numeric(rownames(data)) 
-        z <- t(as.matrix(data))
+        X <- as.numeric(colnames(data)) 
+        Y <- as.numeric(rownames(data)) 
+        Z <- t(as.matrix(data))
         
         # draw contour
-        filled.contour(x, y, z, xlab = xlab, ylab = ylab, 
+        filled.contour(X, Y, Z, xlab = xlab, ylab = ylab, 
                        color.palette = color.palette, 
                        main = main, nlevels = nlevels, ...) 
     }
