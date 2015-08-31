@@ -18,6 +18,7 @@
 #' 
 #' @importFrom reshape2 melt
 #' @importFrom sp point.in.polygon
+#' @importFrom grDevices contourLines
 #' 
 findLocalMax <- function(data, ...) UseMethod("findLocalMax", data)
 

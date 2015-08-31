@@ -1,7 +1,7 @@
 Package: EEM
 Type: Package
 Title: Read and Analyze Fluorescence Excitation-Emission Matrix (EEM) Data
-Version: 1.0.0
+Version: 1.0.1
 Date: 2015-08-05
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>

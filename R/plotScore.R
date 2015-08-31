@@ -51,6 +51,7 @@
 #' # move legend outside
 #' plotScore(result, xPC = 1, yPC = 3, group = country, legendoutside = TRUE)
 #' 
+#' @importFrom graphics abline legend par plot points text
 #' @export
 #' 
 plotScore <-
