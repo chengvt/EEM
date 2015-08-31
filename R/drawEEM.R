@@ -20,6 +20,7 @@
 #' # method for class "EEM"
 #' data(applejuice)
 #' drawEEM(applejuice, 1) # draw contour of the first sample
+#' drawEEM(applejuice, 1, flipaxis = TRUE) # flip the axis
 #' 
 #' # method for class "EEMweight"
 #' applejuice_uf <- unfold(applejuice) # unfold list into matrix
