@@ -3,14 +3,14 @@
 %\VignetteIndexEntry{Introduction to EEM package}
 -->
 
-```{r setup, echo=FALSE}
+```{r setup, echo=FALSE, warning=FALSE}
 library(knitr)
 library(EEM)
 opts_chunk$set(fig.width=6.5, fig.height=4)
 ```
 
 # Introduction to EEM package
-2015.06.05  
+edited on 2015.09.01  
 Vipavee Trivittayasil (Cheng)
 
 ## Table of contents
@@ -38,9 +38,6 @@ Fluorescence fingerprint or more commonly known as complete fluorescence excitat
 Raw data files can be imported using any of the commands below.
 
 ```{r readEEM, eval=FALSE}
-# choose folder interactively
-data <- readEEM() 
-
 # read raw data files from a folder
 data <- readEEM(folder) 
 
@@ -73,6 +70,9 @@ drawEEM(applejuice, n = 1)
 
 # draw EEM of sample no.1 with different color
 drawEEM(applejuice, n = 1, color.palette = cm.colors) 
+
+# flip the axis
+drawEEM(applejuice, n = 1, flipaxis = TRUE) 
 ```
 
 ## <a name="preprocess"></a>Preprocessing EEM data
