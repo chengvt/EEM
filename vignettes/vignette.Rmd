@@ -182,7 +182,7 @@ plotScore(result, xPC = 1, yPC = 2,country, legendlocation = "topright")
 
 # plot score using scatterplot matrix with grouping
 plotScorem(result, ncomp = 5, country)
-plotScorem(result, ncomp = 5, cultivar, pointsize = 1)
+plotScorem(result, ncomp = 5, cultivar, cex = 1)
 ```
 
 ### <a name="pls"></a>Partial least-squares (PLS) regression
