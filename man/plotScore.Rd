@@ -4,7 +4,7 @@
 \alias{plotScore}
 \title{Plot score for prcomp result}
 \usage{
-plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, pointsize = 1.5,
+plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, cex = 1.5,
   label = NULL, pos = 4, col = NULL, pch = NULL, title = NULL,
   legendlocation = "bottomright", legendoutside = FALSE,
   rightwhitespace = 0, legendinset = 0, ...)
@@ -20,7 +20,7 @@ plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, pointsize = 1.5,
 the samples into groups. Able to accept up to two groups which can be stated by
 group = c(group1, group2)}
 
-\item{pointsize}{(optional) size of points on graphs}
+\item{cex}{(optional) size of points on graphs}
 
 \item{label}{(optional) a character vector or expression specifying the text to be written.}
 

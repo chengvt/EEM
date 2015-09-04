@@ -4,7 +4,7 @@
 \alias{plotScorem}
 \title{Plot score matrix for prcomp result based on group}
 \usage{
-plotScorem(prcompResult, ncomp = 4, group, pointsize = 1.5, col = NULL,
+plotScorem(prcompResult, ncomp = 4, group, cex = 1.5, col = NULL,
   pch = NULL, legendtitle = NULL, ...)
 }
 \arguments{
@@ -15,7 +15,7 @@ plotScorem(prcompResult, ncomp = 4, group, pointsize = 1.5, col = NULL,
 \item{group}{variable of numeric, character or factor class separating
 the samples into groups.}
 
-\item{pointsize}{(optional) size of points on graphs}
+\item{cex}{(optional) size of points on graphs}
 
 \item{col}{point color}
 

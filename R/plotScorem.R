@@ -32,7 +32,7 @@
 #' @export
 #' 
 plotScorem <-
-function(prcompResult, ncomp = 4, group, pointsize = 1.5, col = NULL, 
+function(prcompResult, ncomp = 4, group, cex = 1.5, col = NULL, 
          pch = NULL, legendtitle = NULL, ...){
   
   # get information from prcompResult
@@ -63,7 +63,7 @@ function(prcompResult, ncomp = 4, group, pointsize = 1.5, col = NULL,
   # plot
   varlabels <- prcompname(prcompResult, 1:ncomp)
   pairs(score[, 1:ncomp], pch = pch, col = col, 
-        lower.panel = my_line, upper.panel = NULL, cex = pointsize,
+        lower.panel = my_line, upper.panel = NULL, cex = cex,
         labels = varlabels, ...)
   
   # prepare legend names 
@@ -71,6 +71,6 @@ function(prcompResult, ncomp = 4, group, pointsize = 1.5, col = NULL,
   
   # add legend
   legend("topright", legend = as.vector(group), pch = pch.palette,
-         pt.cex = pointsize, col =  col.palette, xpd = TRUE, title = legendtitle)
+         pt.cex = cex, col =  col.palette, xpd = TRUE, title = legendtitle)
   
 }
