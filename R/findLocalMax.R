@@ -8,7 +8,7 @@
 #' @param threshold threshold value ranging from 0 ~ 1. Lower the value to cover low peaks.
 #' @param ... (optional) further arguments passed to other methods
 #' 
-#' @return A dataframe of local maximum peaks
+#' @return Print a dataframe of local maximum peaks and return a character vector of peak names.
 #' 
 #' @examples
 #' data(applejuice)
@@ -78,7 +78,9 @@ findLocalMax.matrix <- function(data, threshold = 0.7, ...){
         }
     }
     row.names(local_max) <- NULL
-    return(local_max)
+    print(local_max)
+    peak_names <- paste0("EX", local_max$EX, "EM", local_max$EM) 
+    return(peak_names)
 }
 
 #' @describeIn findLocalMax for a dataframe with columns being 

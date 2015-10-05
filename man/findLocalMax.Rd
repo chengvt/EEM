@@ -29,7 +29,7 @@ columns = excitation and rows = emission wavelengths.}
 \item{threshold}{threshold value ranging from 0 ~ 1. Lower the value to cover low peaks.}
 }
 \value{
-A dataframe of local maximum peaks
+Print a dataframe of local maximum peaks and return a character vector of peak names.
 }
 \description{
 Find local maximum peaks in EEM data
