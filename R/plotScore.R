@@ -161,7 +161,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
                 legend("topright", inset = c(-0.3-legendinset, 0), 
                        legend = as.vector(group), pch = pch.palette,
                        pt.cex = cex, col = col.palette, 
-                       xpd=TRUE)
+                       xpd = TRUE)
             } else {
                 group <- c(group, NA, group2)
                 col.palette <- c(col.palette, NA, rep("black", numLevels2))
