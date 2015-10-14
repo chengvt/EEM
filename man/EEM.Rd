@@ -4,7 +4,7 @@
 \name{EEM}
 \alias{EEM}
 \alias{EEM-package}
-\title{EEM: A package for reading and analyzing fluorescence
+\title{EEM: A package for reading and preprocessing fluorescence
 excitation-emission matrix}
 \description{
 EEM package can be used to import raw data files,

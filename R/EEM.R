@@ -1,4 +1,4 @@
-#' EEM: A package for reading and analyzing fluorescence
+#' EEM: A package for reading and preprocessing fluorescence
 #' excitation-emission matrix 
 #' 
 #' EEM package can be used to import raw data files, 
