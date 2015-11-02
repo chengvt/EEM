@@ -32,8 +32,6 @@ to the left of, above and to the right of the specified coordinates.}
 
 \item{pch}{point type}
 
-\item{title}{(optional) plot title}
-
 \item{legendlocation}{(optional)location of legend on graph.
 Look up \code{\link[graphics]{legend}} for more details.}
 

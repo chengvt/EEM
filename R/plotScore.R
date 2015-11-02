@@ -23,7 +23,6 @@
 #' Only applicable if legendoutside = TRUE
 #' @param col point color
 #' @param pch point type
-#' @param title (optional) plot title
 #' @param ... additional arguments for \code{\link[graphics]{par}}
 #' 
 #' @return A figure is returned on the graphic device
@@ -129,7 +128,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     
     # plot
     plot(score[, xPC], score[, yPC], xlab = xLabel, ylab = yLabel,
-         main = title, cex = cex, col = col, pch = pch, ...)
+         cex = cex, col = col, pch = pch, ...)
     
     abline(v = 0, h = 0, lty = 2, col = "grey39")
     
