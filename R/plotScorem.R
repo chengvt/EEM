@@ -72,5 +72,5 @@ function(prcompResult, ncomp = 4, group, cex = 1.5, col = NULL,
   # add legend
   legend("topright", legend = as.vector(group), pch = pch.palette,
          pt.cex = cex, col =  col.palette, xpd = TRUE, title = legendtitle)
-  
+  par(xpd = FALSE)
 }

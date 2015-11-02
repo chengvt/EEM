@@ -187,4 +187,5 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
                    xpd = TRUE)
         }
     }
+    par(xpd = FALSE)
 }
