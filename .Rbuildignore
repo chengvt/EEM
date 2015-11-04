@@ -1,5 +1,6 @@
 .gitignore
 .Rhistory
+readme.md
 ^/\.gitattributes$
 vignettes/*.html
 vignettes/rsconnect
