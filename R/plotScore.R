@@ -56,7 +56,6 @@
 plotScore <-
 function(prcompResult, xPC = 1, yPC = 2, group = NULL,
          cex = 1.5, label = NULL, pos = 4, col = NULL, pch = NULL,
-         title = NULL,
          legendlocation = "bottomright",
          legendoutside = FALSE,
          rightwhitespace = 0,
@@ -118,7 +117,6 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     # prepare plotting information
     xLabel <- prcompname(prcompResult, xPC)
     yLabel <- prcompname(prcompResult, yPC)
-    if (is.null(title)) title <- paste("PC ", xPC, " vs PC ", yPC, sep = "")
     
     # set plotting area when there is legend outside
     if (is.g & isTRUE(legendoutside)) {

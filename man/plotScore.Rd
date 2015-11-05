@@ -5,7 +5,7 @@
 \title{Plot score for prcomp result}
 \usage{
 plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, cex = 1.5,
-  label = NULL, pos = 4, col = NULL, pch = NULL, title = NULL,
+  label = NULL, pos = 4, col = NULL, pch = NULL,
   legendlocation = "bottomright", legendoutside = FALSE,
   rightwhitespace = 0, legendinset = 0, ...)
 }
