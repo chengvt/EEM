@@ -6,7 +6,8 @@
 #' 
 #' @return \code{readEEM} returns a list containing each raw files
 #' 
-#' @details The supported format is outputs from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech) and RF-6000 (Shimadzu) fluorescence spectrometer. 
+#' @details The supported format is outputs from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech), RF-6000 (Shimadzu) and
+#' Aqualog (Horiba) fluorescence spectrometer. 
 #' It is likely that outputs from different machines of the same companies are supported by this function.
 #' Please send a word or pull request to add support for other formats. 
 #' 
@@ -26,7 +27,7 @@ readEEM <-
         
         # if folder paths are provided, use them
         if (all(isDirectory(pathname))) {
-            acceptableFileExtension <- "\\.csv$|\\.txt$|\\.xls$|\\.xlsx$"
+            acceptableFileExtension <- "\\.csv$|\\.txt$|\\.xls$|\\.xlsx$|\\.dat$"
             fileList <- list.files(path = pathname, pattern = acceptableFileExtension, 
                                    ignore.case = TRUE, full.names = TRUE)
         }
@@ -78,7 +79,7 @@ readSingleEEM <- function(file){
         tmpData <- as.character(read_excel(file)[,1], stringsAsFactors = FALSE)
     } else {
         tmpData = readLines(file, warn = FALSE)
-        switch(fileExtension, csv = {SEP <- ","}, txt = {SEP <- ""})
+        switch(fileExtension, csv = {SEP <- ","}, txt = {SEP <- ""}, dat = {SEP <- "\t"})
     }
     
     # check if tmpdata contains non ASCII
@@ -100,9 +101,14 @@ readSingleEEM <- function(file){
     pattern <- paste(pat_FP8500, pat_F7000, pat_F7000_J_xls, pat_F7000_J_txt, pat_RF6000, sep = "|")
     index <- grep(pattern, tmpData, ignore.case = TRUE)
     if (length(index) == 0) {
-        warning(paste0("'", basename(file), "' does not have the right format. So it will not be read."))
-        data <- "DO NOT READ"
-        return(data)
+        if (fileExtension %in% "dat") { 
+            # add exception for Aqualog 
+            index <- 0
+        } else {
+            warning(paste0("'", basename(file), "' does not have the right format. So it will not be read."))
+            data <- "DO NOT READ"
+            return(data)   
+        }
     }
     # read data
     if (isEXCEL){
@@ -125,10 +131,10 @@ readSingleEEM <- function(file){
         }
         
     }
-
+    
     # output
     data <- as.matrix(data.frame(c(data_noRowNames[,-1]), 
-                                 row.names = as.numeric(data_noRowNames[,1]), 
+                                 row.names = as.numeric(as.character(data_noRowNames[,1])), 
                                  check.names = FALSE)) 
     
     # delete NA or blank rows if present
@@ -138,7 +144,7 @@ readSingleEEM <- function(file){
     # delete NA or blank columns if present
     NA_col <- which(is.na(colnames(data))|colnames(data) %in% ""|grepl("NA", colnames(data)))
     if (length(NA_col) > 0) data <- data[,-NA_col]
-
+    
     # make column names into numeric
     colnames(data) <- as.numeric(colnames(data))
     
