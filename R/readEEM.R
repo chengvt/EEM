@@ -2,7 +2,7 @@
 #' 
 #' Read raw files from fluorescence spectrometer
 #' 
-#' @param pathname path to the files or folders which contains raw files (accept a vector). 
+#' @param path path to the files or folders which contains raw files (accept a vector). 
 #' 
 #' @return \code{readEEM} returns a list containing each raw files
 #' 
@@ -18,17 +18,17 @@
 #' @importFrom readxl read_excel
 #' @importFrom R.utils isDirectory isFile
 readEEM <-
-    function(pathname = NULL){
+    function(path = NULL){
         
         if (nargs() == 0) stop("Folder or file has not been specified.")
         
         # if file names are provided, use them
-        if (all(isFile(pathname))) fileList <- pathname
+        if (all(isFile(path))) fileList <- path
         
         # if folder paths are provided, use them
-        if (all(isDirectory(pathname))) {
+        if (all(isDirectory(path))) {
             acceptableFileExtension <- "\\.csv$|\\.txt$|\\.xls$|\\.xlsx$|\\.dat$"
-            fileList <- list.files(path = pathname, pattern = acceptableFileExtension, 
+            fileList <- list.files(path = path, pattern = acceptableFileExtension, 
                                    ignore.case = TRUE, full.names = TRUE)
         }
         

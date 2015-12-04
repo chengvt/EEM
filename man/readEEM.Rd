@@ -4,10 +4,10 @@
 \alias{readEEM}
 \title{Read raw files and return a list}
 \usage{
-readEEM(pathname = NULL)
+readEEM(path = NULL)
 }
 \arguments{
-\item{pathname}{path to the files or folders which contains raw files (accept a vector).}
+\item{path}{path to the files or folders which contains raw files (accept a vector).}
 }
 \value{
 \code{readEEM} returns a list containing each raw files
