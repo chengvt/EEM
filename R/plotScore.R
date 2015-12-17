@@ -121,7 +121,7 @@ function(prcompResult, xPC = 1, yPC = 2, group = NULL,
     # set plotting area when there is legend outside
     if (is.g & isTRUE(legendoutside)) {
         # modify space if legendoutside == TRUE
-        par(mar = c(5.1, 4.1, 4.1, 2.1+6+rightwhitespace), xpd = TRUE)
+        par(mar = c(5.1, 4.1, 4.1, 2.1+6+rightwhitespace))
     }
     
     # plot
