@@ -5,8 +5,8 @@
 \title{Plot score for prcomp result}
 \usage{
 plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, group2 = NULL,
-  cex = 1.5, label = NULL, pos = 4, col = NULL, pch = NULL,
-  legendlocation = "bottomright", legendoutside = FALSE,
+  cex = 1.5, cex.legend = 1, label = NULL, pos = 4, col = NULL,
+  pch = NULL, legendlocation = "bottomright", legendoutside = FALSE,
   rightwhitespace = 0, legendinset = 0, ...)
 }
 \arguments{
@@ -23,6 +23,8 @@ the samples into groups. Correspond to point color.}
 the samples into groups. Correspond to point shape.}
 
 \item{cex}{(optional) size of points on graphs}
+
+\item{cex.legend}{(optional) size of fonts in legend}
 
 \item{label}{(optional) a character vector or expression specifying the text to be written.}
 

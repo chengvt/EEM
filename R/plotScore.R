@@ -6,6 +6,7 @@
 #' @param xPC an integer indicating PC component on x-axis
 #' @param yPC an integer indicating PC component on y-axis
 #' @param cex (optional) size of points on graphs 
+#' @param cex.legend (optional) size of fonts in legend 
 #' @param label (optional) a character vector or expression specifying the text to be written.
 #' @param pos (optional, applicable when label is given) a position specifier for the text. If specified this overrides 
 #' any adj value given. Values of 1, 2, 3 and 4, respectively indicate positions below, 
@@ -58,7 +59,7 @@
 #' 
 plotScore <-
     function(prcompResult, xPC = 1, yPC = 2, group = NULL, group2 = NULL,
-             cex = 1.5, label = NULL, pos = 4, col = NULL, pch = NULL,
+             cex = 1.5, cex.legend = 1, label = NULL, pos = 4, col = NULL, pch = NULL,
              legendlocation = "bottomright",
              legendoutside = FALSE,
              rightwhitespace = 0,
@@ -145,7 +146,7 @@ plotScore <-
                  pos = pos)
         }
         
-        # legend for is.g
+        # legend for group
         if (has_group | has_group2){
             # turn unclassed factor back 
             group <- levels(group) 
@@ -165,7 +166,7 @@ plotScore <-
                 # legendlocation will be overwritten if provided
                 par(xpd = T)
                 legend(par()$usr[2], par()$usr[4], legend = legend_labels, pch = pch.palette,
-                           pt.cex = cex, col = col.palette, xpd = TRUE)
+                           pt.cex = cex, col = col.palette, xpd = TRUE, cex = cex.legend)
                 
                 # reset mar 
                 par(mar = c(5.1, 4.1, 4.1, 2.1))
@@ -173,7 +174,7 @@ plotScore <-
             } else {
                 # plot legend inside
                 legend(legendlocation, legend = legend_labels, pch = pch.palette,
-                       pt.cex = cex, col = col.palette, xpd = TRUE)
+                       pt.cex = cex, col = col.palette, xpd = TRUE, cex = cex.legend)
             }
         }
         par(xpd = FALSE)
