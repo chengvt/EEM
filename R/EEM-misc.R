@@ -25,7 +25,7 @@ generatePoint <- function(n, pch = NULL){
     return(pointType)
 }
 
-#' @describeIn EEM-misc
+#' @describeIn EEM-misc generate colors
 #' @export
 generateColor <- function(n, color.palette = NULL){
     if (is.null(color.palette)) {
@@ -38,7 +38,7 @@ generateColor <- function(n, color.palette = NULL){
     return(colorType)
 }
 
-#' @describeIn EEM-misc
+#' @describeIn EEM-misc get EX value
 #' @export
 getEX <- function(string, digits = NULL){
     pat <- "(EX|.*EX)(.*)(EM)(.*)"
@@ -49,7 +49,7 @@ getEX <- function(string, digits = NULL){
     return(ex)
 }
 
-#' @describeIn EEM-misc
+#' @describeIn EEM-misc get EM value
 #' @export
 getEM <- function(string, digits = NULL){
     pat <- "(EX|.*EX)(.*)(EM)(.*)"
