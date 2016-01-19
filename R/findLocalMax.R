@@ -6,6 +6,7 @@
 #' columns = excitation and rows = emission wavelengths.
 #' @param n sample number. The number should not exceed \code{length(EEM)}.
 #' @param threshold threshold value ranging from 0 ~ 1. Lower the value to cover low peaks.
+#' @param showprint logical value whether to print out the results or not
 #' @param ... (optional) further arguments passed to other methods
 #' 
 #' @return Print a dataframe of local maximum peaks and return a character vector of peak names.
@@ -24,7 +25,7 @@ findLocalMax <- function(data, ...) UseMethod("findLocalMax", data)
 
 #' @describeIn findLocalMax for EEM data created by \code{\link{readEEM}} function
 #' @export
-findLocalMax.EEM <- function(data, n, threshold = 0.7, ...){
+findLocalMax.EEM <- function(data, n, threshold = 0.7, showprint = TRUE, ...){
     
         # make sure that n is given
         if (nargs() < 2) stop('Require at least 2 arguments')
@@ -40,7 +41,7 @@ findLocalMax.EEM <- function(data, n, threshold = 0.7, ...){
 #' @describeIn findLocalMax for a matrix with columns being 
 #' excitation wavelength and rows being emission wavelength
 #' @export
-findLocalMax.matrix <- function(data, threshold = 0.7, ...){
+findLocalMax.matrix <- function(data, threshold = 0.7, showprint = TRUE, ...){
     
     # get contourLines
     x <- as.numeric(colnames(data)) # EX
@@ -78,7 +79,7 @@ findLocalMax.matrix <- function(data, threshold = 0.7, ...){
         }
     }
     row.names(local_max) <- NULL
-    print(local_max)
+    if (showprint) print(local_max)
     peak_names <- paste0("EX", local_max$EX, "EM", local_max$EM) 
     return(peak_names)
 }
@@ -86,7 +87,7 @@ findLocalMax.matrix <- function(data, threshold = 0.7, ...){
 #' @describeIn findLocalMax for a dataframe with columns being 
 #' excitation wavelength and rows being emission wavelength
 #' @export
-findLocalMax.data.frame <- function(data, threshold = 0.7, ...){
+findLocalMax.data.frame <- function(data, threshold = 0.7, showprint = TRUE, ...){
     
     # dataframe to matrix
     data <- as.matrix(data)
@@ -99,7 +100,7 @@ findLocalMax.data.frame <- function(data, threshold = 0.7, ...){
 #' @describeIn findLocalMax for a vector of numeric values which have names in 
 #' the format of EX...EM...
 #' @export
-findLocalMax.numeric <- function(data, threshold = 0.7, ...){
+findLocalMax.numeric <- function(data, threshold = 0.7, showprint = TRUE, ...){
 
     # convert data to matrix form
     name <- names(data)
