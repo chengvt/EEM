@@ -19,5 +19,5 @@ If you don't have `devtools` install yet, you will need to first install it.
 
     install.packages("devtools")
 	
-The package vignette is available in [English](http://rpubs.com/chengvt/EEM) and 
+The package vignette is available in [English](vignettes/vignette.md) and 
 [Japanese](http://rpubs.com/chengvt/EEM_Japanese).
