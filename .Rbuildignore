@@ -4,3 +4,4 @@ readme.md
 ^/\.gitattributes$
 vignettes/*.html
 vignettes/rsconnect
+^NEWS\.md$
