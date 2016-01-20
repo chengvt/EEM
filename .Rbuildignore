@@ -5,3 +5,5 @@ readme.md
 vignettes/*.html
 vignettes/rsconnect
 ^NEWS\.md$
+^vignettes/vignette\.md$
+^vignettes/figure$
