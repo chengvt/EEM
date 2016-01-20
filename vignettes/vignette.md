@@ -1,17 +1,14 @@
----
-title: "Introduction to EEM package"
-author: "Vipavee Trivittayasil"
-date: "2016-01-20"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to EEM package}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Introduction to EEM package}
+-->
 
 
 
-# Table of contents
+# Introduction to EEM package
+edited on 2016.01.20
+
+## Table of contents
 
 - [Introduction](#intro)
 - [Importing raw data files](#import)
@@ -27,10 +24,10 @@ vignette: >
     - [Partial least-squares (PLS) regression](#pls)
 - [References](#ref)
 
-# <a name="intro"></a>Introduction
+## <a name="intro"></a>Introduction
 Fluorescence fingerprint or more commonly known as complete fluorescence excitation-emission matrix (EEM) is a 3-dimensional data consisting of excitation, emission and intensity axis. The multi-dimension set EEM data apart from other signal processing. Thus, `EEM` package was developed to facilitate data analysis in R. Basic tools for importing raw data files, deleting Rayleigh scattering rays, unfolding 3-dimensional to 2-dimentional matrix for further multivariate analysis, and visualizing data are provided in this package. The author has intended this package to be used as a bridge between raw data files and other analysis tools. 
 
-# <a name="import"></a>Importing raw data files
+## <a name="import"></a>Importing raw data files
 `readEEM` function is used to read raw data files into R. Currently the supported raw data files were *.txt and *.csv raw files from FP8500 (JASCO, Japan) and F7000 (Hitachi Hi-tech, Japan) fluorescence spectrometer. It is likely that the raw files from different models of the same companies can be read by this function. Basically `readEEM` will look for the word "XYPOINT" or "Data Points" in raw files and start to read in the lines below them.  Please send a word or pull request to add support for other formats. 
 
 Raw data files can be imported using any of the commands below.
@@ -74,10 +71,10 @@ summary(applejuice)
 ```
 
 
-# <a name="visualize"></a>Visualizing EEM data
+## <a name="visualize"></a>Visualizing EEM data
 EEM data is usually visualized using a contour representation. Three functions are offered for creating contours. 
 
-## <a name="drawEEM"></a>drawEEM
+### <a name="drawEEM"></a>drawEEM
 `drawEEM` is a simple function, built based on filled.contour of graphics package, used to draw any sample of an `EEM` class object. 
 
 
@@ -102,10 +99,10 @@ drawEEM(applejuice, n = 1, flipaxis = TRUE)
 
 ![plot of chunk drawEEM](figure/drawEEM-3.png)
 
-# <a name="preprocess"></a>Preprocessing EEM data
+## <a name="preprocess"></a>Preprocessing EEM data
 Raw EEM data typically requires data cleaning, although some recent machines produced thoroughly cleaned data. Many papers (Fujita et al. (2010), Murphy et al. (2013)) have already discussed about the methods for cleaning and processing EEM data so the details will not be mentioned here. 
 
-## <a name="delScattering"></a>Delete Rayleign scattering rays
+### <a name="delScattering"></a>Delete Rayleign scattering rays
 The Rayleign scattering rays of different orders can be deleted using `delScattering`. It is possible to choose whether to fill in the blank with NA or 0 by specifying `rep` argument. By running this function, the regions unrelated to fluorescence (where Em < Ex) will be also be deleted. 
 
 
@@ -134,7 +131,7 @@ drawEEM(applejuice_delS, 1)
 applejuice_delS <- delScattering(applejuice, rep = 0, 
                                  first = 30, second = 0, third = 0, forth = 0) 
 ```
-## <a name="cutEEM"></a>Cutting portion of EEM
+### <a name="cutEEM"></a>Cutting portion of EEM
 `cutEEM` function offers a method to cut portions of EEM by specifying `cutEX` and `cutEM` argument values. However, please take note that it is not possible to cut portion in the middle. 
 
 
@@ -145,7 +142,7 @@ drawEEM(applejuice_delS_cut, 1)
 
 ![plot of chunk cutEEM](figure/cutEEM-1.png)
 
-## <a name="unfold"></a>Unfolding 3-d data into 2-d data for multivariate analysis
+### <a name="unfold"></a>Unfolding 3-d data into 2-d data for multivariate analysis
 
 EEM data can be unfolded into a matrix with columns as variables (wavelength conditions) and rows as samples, which is a common format for multivariate analysis. 
 
@@ -178,7 +175,7 @@ applejuice_delS_uf[1:5 ,1:5]
 
 Unfolded data can also be folded back into EEM class by `fold` function.
 
-## <a name="normalize"></a>Normalize
+### <a name="normalize"></a>Normalize
 Unfolded data can be normalized using `normalize` function to adjust the scaling difference, which is a common bias in spectroscopic applications. This difference can be caused by the scattering effect, source/detector variation and instrumental sensitivity. `Normalize` function will do the row processing of the unfolded data by divide each variable by the sum of the absolute value of all variables for the given sample. The output will return a matrix where each row is a vector with unit area (area = 1). 
 
 
@@ -205,9 +202,9 @@ rowSums(abs(applejuice_delS_uf_norm))
 ##                1                1                1                1
 ```
 
-# <a name="analyze"></a>Analyzing EEM data
+## <a name="analyze"></a>Analyzing EEM data
 
-## <a name="pca"></a>Principal component analysis (PCA)
+### <a name="pca"></a>Principal component analysis (PCA)
 `prcomp` of `stats` package can be used to perform PCA on the unfolded data. 
 
 
@@ -291,7 +288,7 @@ plotScorem(result, ncomp = 5, cultivar, cex = 1)
 
 ![plot of chunk scoreg](figure/scoreg-3.png)
 
-## <a name="pls"></a>Partial least-squares (PLS) regression
+### <a name="pls"></a>Partial least-squares (PLS) regression
 PLS regression can be calculated using `plsr` function of `pls` package. `plsr` function returns an output variable of the class `mvr`. The latent variables can be visualized in a contour representation using `plotLoading` function. Similarly, the regression coefficient can be visualized in a contour representation using `plotReg` function.
 
 
@@ -320,7 +317,7 @@ plotReg(model)
 
 As of now, both functions only support results from `pls` package. If there is a need, I will add support for other packages. 
 
-# <a name="ref"></a>References
+## <a name="ref"></a>References
 Fujita, K., Tsuta, M., Kokawa, M., & Sugiyama, J. (2010). Detection of deoxynivalenol using fluorescence excitation-emission matrix. Food and Bioprocess Technology, 3(6), 922-927.
 
 Murphy, K. R., Stedmon, C. A., Graeber, D., & Bro, R. (2013). Tutorial Review: Fluorescence spectroscopy and multi-way techniques. PARAFAC. Analytical Methods. 
