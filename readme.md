@@ -2,6 +2,8 @@
 
 `EEM` is an R package for reading and analyzing fluorescence excitation-emission matrix (EEM). Some preprocessing methods and means to visualize multivariate analysis results (PCA and PLS) are provided.
 
+The changes during version updates are recorded [here](NEWS.md).
+
 ### To install
 
 The stable version:
