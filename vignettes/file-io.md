@@ -100,10 +100,3 @@ datamatrix_folded <- fold(as.matrix(datamatrix))
 class(datamatrix_folded)
 ```
 
-
-```r
-data(applejuice)
-drawEEM(applejuice, 1)
-```
-
-![plot of chunk test](figure_file-io/test-1.png)
