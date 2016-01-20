@@ -1,4 +1,4 @@
-# Current development (master branch)
+# EEM v1.0.4.9000 (master branch)
 ## New features
 * Add support for Aqualog .dat file
 * The font size for the group legend box can now be specified using `cex.legend` in `plotScore` function.
