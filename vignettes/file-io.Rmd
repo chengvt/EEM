@@ -1,0 +1,105 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Importing and exporting of raw files}
+-->
+```{r setup, echo=FALSE, results="hide", warning=FALSE}
+suppressPackageStartupMessages({
+    library(EEM)
+})
+```
+
+```{r setup2, echo=FALSE, warning=FALSE}
+library(knitr)
+library(EEM)
+opts_chunk$set(fig.path = "figure_file-io/")
+```
+
+# Importing and exporting of raw files
+edited on 2016.01.20
+
+## Introduction
+This document explains how raw fluorescence excitation-emission matrix (EEM) data files can be imported into R as `EEM` class object. The raw data files here refer to text-based files (\*.csv, \*.txt) which can be exported from the fluorescence spectrometer. `readEEM` function is available in the package for reading in the raw data files. However, it should be noted that only specific formats (described in section 2.2) are supported. Aside from the file format, `readEEM` only requires that the raw data were divided into each files for each samples. Newer equipment software does the unfolding of many samples into a matrix where each row is each sample and each column is each wavelength condition. For this type of data matrix, a procedure is described in section 3. 
+
+## Importing raw data files using `readEEM`
+### `readEEM` function
+#### How to use
+`readEEM` accepts `pathname` argument which can be a string of characters specifying path to the files or folders. Note that multiple folders can also be specified. 
+
+```{r readEEM, eval=FALSE}
+library(EEM)
+readEEM("sample1.txt") # read in a file
+readEEM(c("sample1.txt", "sample2.txt")) # read in two files
+readEEM("/data") # read in all files in data folder
+readEEM(c("/data", "/data2")) # read in all files in two folders
+readEEM("C:\\data") # full path. Note that the slash is doubled.
+readEEM("C:/data") # read in all files in data folder. Aside from double slashes,
+                   # a reverted slash can also be used. 
+```
+
+If the working folder which contains raw data files has already been set, 
+`readEEM(".")` or `readEEM(getwd())` can be used to access them directly. 
+
+#### How it works
+`readEEM` first checks the extensions of a file or all files in the folder. The acceptable extensions are \*.csv, \*.txt, \*.xls, \*.xlsx, and \*.dat. It will not read in the files whose extensions are not in the list. It will then check the formats of each files (see next section on company-specific formats). The files whose format is not supported by `readEEM` will not be read in. 
+
+The method that `readEEM` uses to check the file format is to look out for a certain keyword which is located just above the raw data. As section 2.2 will explain in more details, the formats of different companies are very similar except for the number of filler lines at the top. `readEEM` will look for a keyword which signals the end of the filler lines and the start of raw data. 
+
+### Company-specific formats
+#### JASCO
+Reference machine: FP-8500  
+The raw files are of "\*.jwb" extension. They can be converted into text-based files (\*.csv, \*.txt)
+The keyword before the data starts is "XYDATA". Columns are excitation wavelength and rows are emission wavelength.
+
+
+#### Hitachi Hi-tech
+Reference machine: F-7000  
+The keyword before the data starts is "Data Points" or "ﾃﾞｰﾀﾘｽﾄ".Columns are excitation wavelength and rows are emission wavelength.
+
+
+#### Shimadzu
+Reference machine: RF-6000  
+The keyword before the data starts is "Rawdata" or "CorrectionData". Columns and rows are exchangable as excitation and emission wavelength. We assume that rows are excitation wavelength and columns are emission wavelength unless the word "励起波長/蛍光波長" is present. The exception has only been added for the Japanese keyword since we only have the sample data in Japanese.
+
+#### Horiba
+
+
+#### Others
+
+## Importing data matrix
+Some recent machines can export unfolded data matrix directly. The unfolded data matrix refer to a matrix whose columns represent the wavelength conditions and rows represent the samples. If the columns and rows are in reverse, it is always possible to transpose it using `t()` after importing into R. Those data matrix can be imported into R as a data frame or matrix first before `fold`ing it into an `EEM` class object. 
+
+### Importing a data matrix file into R
+
+#### \*.txt or \*.csv files
+```{r import, eval=FALSE}
+datamatrix <- read.csv("datamatrix.csv", row.names = 1) # for csv
+datamatrix <- read.csv("datamatrix.txt", row.names = 1) # for txt
+datamatrix[1:5,1:5] # check the first 5 rows and columns
+```
+Note that `row.names` was used to specify that the row names exist and they are in column number 1.
+
+#### excel file
+```{r import_excel, eval=FALSE}
+library(readxl)
+datamatrix <- read_excel("datamatrix.csv")
+datamatrix[1:5,1:5] # check the first 5 rows and columns
+```
+
+For `read_excel`, row names cannot be specified so the first column is filled with row names instead. To edit that the following trick can be used.
+
+```{r import_excel2, eval=FALSE}
+rownames(datamatrix) <- datamatrix[,1] # assign the first column to the matrix row names
+datamatrix <- datamatrix[,-1] # delete the first column
+datamatrix[1:5,1:5] # check the first 5 rows and columns
+```
+
+### Folding the data matrix or data frame into `EEM` object
+
+Before the folding operation, there is one condition that the data matrix must meet. The column names must be of `EX???EM???` format. The `???` represent the wavelength value in nm. The usable examples include `EX200EM230` and even with decimal point inside `EX200.5EM400.5`
+
+```{r fold, eval=FALSE}
+library(EEM)
+datamatrix_folded <- fold(as.matrix(datamatrix))
+class(datamatrix_folded)
+```
+
