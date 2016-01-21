@@ -1,6 +1,7 @@
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{Importing and exporting of raw files}
+\usepackage[utf8]{inputenc}
 -->
 ```{r setup, echo=FALSE, results="hide", warning=FALSE}
 suppressPackageStartupMessages({
