@@ -9,7 +9,8 @@
 #' @param showprint logical value whether to print out the results or not
 #' @param ... (optional) further arguments passed to other methods
 #' 
-#' @return Print a dataframe of local maximum peaks and return a character vector of peak names.
+#' @return return a character vector of peak names. If showprint = TRUE, it will also 
+#' print a dataframe of indicating the value of local maximum peaks.
 #' 
 #' @examples
 #' data(applejuice)
@@ -34,8 +35,8 @@ findLocalMax.EEM <- function(data, n, threshold = 0.7, showprint = TRUE, ...){
         data <- data[[n]]
         
         # calculate for regional max
-        local_max <- findLocalMax.matrix(data, threshold = threshold)
-        return(local_max)
+        peak_names <- findLocalMax.matrix(data, threshold = threshold, showprint = showprint)
+        return(peak_names)
 }
 
 #' @describeIn findLocalMax for a matrix with columns being 
@@ -93,8 +94,8 @@ findLocalMax.data.frame <- function(data, threshold = 0.7, showprint = TRUE, ...
     data <- as.matrix(data)
     
     # calculate for regional max
-    local_max <- findLocalMax.matrix(data, threshold = threshold)
-    return(local_max)
+    peak_names <- findLocalMax.matrix(data, threshold = threshold, showprint = showprint)
+    return(peak_names)
 }
 
 #' @describeIn findLocalMax for a vector of numeric values which have names in 
@@ -110,6 +111,6 @@ findLocalMax.numeric <- function(data, threshold = 0.7, showprint = TRUE, ...){
     data.casted <- acast(data, em ~ ex, value.var = "value")
     
     # calculate for regional max
-    local_max <- findLocalMax.matrix(data.casted, threshold = threshold)
-    return(local_max)
+    peak_names <- findLocalMax.matrix(data, threshold = threshold, showprint = showprint)
+    return(peak_names)
 }

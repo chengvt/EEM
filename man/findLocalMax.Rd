@@ -32,7 +32,8 @@ columns = excitation and rows = emission wavelengths.}
 \item{showprint}{logical value whether to print out the results or not}
 }
 \value{
-Print a dataframe of local maximum peaks and return a character vector of peak names.
+return a character vector of peak names. If showprint = TRUE, it will also 
+print a dataframe of indicating the value of local maximum peaks.
 }
 \description{
 Find local maximum peaks in EEM data
