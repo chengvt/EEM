@@ -11,4 +11,7 @@ EEM package can be used to import raw data files,
 visualizing data and preparing them for multivariate 
 analysis
 }
+\details{
+The latest version and documentation can be found \href{https://github.com/chengvt/EEM}{here}.
+}
 

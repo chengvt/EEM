@@ -5,6 +5,8 @@
 #' visualizing data and preparing them for multivariate 
 #' analysis
 #' 
+#' The latest version and documentation can be found \href{https://github.com/chengvt/EEM}{here}.
+#' 
 #' @docType package
 #' @name EEM
 NULL
