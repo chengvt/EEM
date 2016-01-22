@@ -151,5 +151,9 @@ readSingleEEM <- function(file){
     # transpose data if required
     if (toTranspose) data <- t(data)
     
+    # sort columns so that the wavelength will continue to increase
+    col_order <- order(as.numeric(colnames(data)))
+    if (col_order[1] != 1) data <- data[, col_order]
+    
     return(data)
 }
