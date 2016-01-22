@@ -22,7 +22,7 @@
 
 ## Manuals
 The package vignette is available in [English](vignettes/vignette.md) and 
-[Japanese](http://rpubs.com/chengvt/EEM_Japanese). The detailed manual on [importing and exporting of raw files](vignettes/file-io.md) is also available.
+[Japanese](http://rpubs.com/chengvt/EEM_Japanese). The detailed manual on [importing raw files](vignettes/file-io.md) is also available.
 
 The changes during version updates are recorded [here](NEWS.md).
 

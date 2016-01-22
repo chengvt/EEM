@@ -1,6 +1,8 @@
 #' Delete scattering rays
 #'
-#' This function deletes two types of rays that are not related to fluorescence emission: (1) regions where emission wavelength is shorten than excitation light, (2) scattering rays and their second, third and forth order lights. 
+#' This function deletes two regions that are not related to fluorescence emission: 
+#' (1) regions where emission wavelength is shorten than excitation light, 
+#' (2) scattering rays and their second, third and forth order lights. 
 #'
 #' @param EEM A list containing EEM data as created by \code{\link{readEEM}} function.
 #' @param rep (optional) Regions to be deleted are to be replaced with \code{rep}: 0 or NA

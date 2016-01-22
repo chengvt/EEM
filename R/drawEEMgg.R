@@ -49,7 +49,7 @@ drawEEMgg <- function(x, ...) UseMethod("drawEEMgg", x)
 #' @export
 #'
 drawEEMgg.EEM <-
-  function(x, n, textsize = 25, color.palette = matlab.like, geom = "path", 
+  function(x, n, textsize = 20, color.palette = matlab.like, geom = "path", 
            nlevels = 20, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", main = NULL,
            has_legend = TRUE, zlim = NULL, breaks = waiver(), flipaxis = FALSE){
 
