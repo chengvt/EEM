@@ -2,7 +2,7 @@ Package: EEM
 Type: Package
 Title: Read and Preprocess Fluorescence Excitation-Emission Matrix (EEM) Data
 Version: 1.0.4.9000
-Date: 2015-10-14
+Date: 2016-01-22
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
 Description: Read raw EEM data and prepares them for further analysis.
@@ -16,7 +16,8 @@ Imports:
     utils,
     readxl,
     R.utils,
-    sp
+    sp,
+    ggplot2
 Suggests:
     stats,
     pls,
