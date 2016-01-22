@@ -29,6 +29,9 @@
 #' 
 #' @export
 #' 
+#' @seealso
+#' \code{\link{drawEEM}}
+#' 
 #' @importFrom graphics filled.contour
 #' @importFrom colorRamps matlab.like
 #' @importFrom reshape2 acast

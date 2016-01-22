@@ -87,4 +87,7 @@ result <- prcomp(applejuice_uf)
 drawEEM(getLoading(result), 1) # plot loading of the first PC
 
 }
+\seealso{
+\code{\link{drawEEM}}
+}
 
