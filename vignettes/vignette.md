@@ -140,7 +140,7 @@ drawEEM(applejuice, n = 1, flipaxis = TRUE)
 ![plot of chunk drawEEM2](figure/drawEEM2-1.png)
 
 ### <a name="drawEEMgg"></a>drawEEMgg
-`drawEEMgg` is an alternative contour creator. It uses `ggplot2` package to draw contour. The big merit of using `drawEEMgg` over `drawEEM` is its support for the uneven spacing of wavelengths (ie. 200.5 201.7 203.1 ... 230.5 nm). 
+`drawEEMgg` is an alternative contour creator. It uses `ggplot2` package to draw contour.  
 
 
 ```r
