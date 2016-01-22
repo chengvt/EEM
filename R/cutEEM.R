@@ -4,15 +4,16 @@
 #'
 #' @inheritParams drawEEM
 #' @param cutEX Numeric or sequential data specifying regions to be cut for excitation wavelength. 
-#' Examples, 200 or 200:500 or c(200:300, 600:800)
+#' Examples, 200 or 200:500 
 #' @param cutEM Numeric or sequential data specifying regions to be cut for emission wavelength. 
-#' Examples, 200 or 200:500 or c(200:300, 600:800)
+#' Examples, 200 or 200:500 
 #'
 #' @return A list similar to input \code{EEM} is returned but with specified portions cut. 
 #'
 #' @examples
 #' data(applejuice)
-#' drawEEM(cutEEM(applejuice, cutEX = 200:250), 1)
+#' applejuice_cut <- cutEEM(applejuice, cutEX = 300:450)
+#' drawEEM(applejuice_cut, 1)
 #'
 #' @export
 
@@ -48,12 +49,21 @@ cutEEM.EEM <- function(x, cutEX = NULL, cutEM = NULL){
         stop("Cannot cut through the middle.")
         }
     }
-        
+    
+    # function to find logical index to cut
+    cut_index <- function(WL, cut_value){
+        if (is.null(cut_value)){
+            rep(FALSE, length(WL))
+        } else {
+            min(cut_value) <= WL & WL <= max(cut_value)
+        }
+    }
+    
     # prepare logical value for rows remain after cutting (EM)
-    rowIdx <- !(rowname %in% cutEM)
+    rowIdx <- !cut_index(rowname, cutEM)
     
     # prepare columns remain after cutting (EX)
-    colIdx <-  !(colname %in% cutEX)
+    colIdx <-  !cut_index(colname, cutEX)
     colSelected <- which(colIdx)
     
     # cut
@@ -98,9 +108,18 @@ cutEEM.EEMweight <- function(x, cutEX = NULL, cutEM = NULL){
         }
     }
     
+    # function to find logical index to cut
+    cut_index <- function(WL, cut_value){
+        if (is.null(cut_value)){
+            rep(FALSE, length(WL))
+        } else {
+            min(cut_value) <= WL & WL <= max(cut_value)
+        }
+    }
+    
     # prepare logical index for columns remaining after cutting 
-    EXIdx <-  !(EX %in% cutEX)
-    EMIdx <- !(EM %in% cutEM)
+    EXIdx <-  !cut_index(EX, cutEX)
+    EMIdx <- !cut_index(EM, cutEM)
     index <- EXIdx & EMIdx
     
     # cut
