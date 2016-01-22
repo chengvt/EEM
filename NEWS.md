@@ -3,6 +3,7 @@
 * Add support for Aqualog .dat file
 * The font size for the group legend box can now be specified using `cex.legend` in `plotScore` function.
 * Add `delScattering2` function
+* Add `drawEEMgg` function
 
 ## Minor change
 * add `showprint` argument in `findLocalMax` to turn on/off the printing.
