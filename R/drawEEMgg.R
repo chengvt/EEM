@@ -18,7 +18,7 @@
 #' 
 #' @return A figure is returned on the graphic device
 #' 
-#' @details \code{\link{drawEEM}} is faster and should be used. But since it lacks multiple plotting capacity, \code{\link{drawEEMgg}} was created to work with drawMultipleEEM.
+#' @details \code{\link{drawEEM}} is faster and should be used. 
 #' 
 #' @examples
 #' \dontrun{
@@ -29,11 +29,16 @@
 #' drawEEMgg(applejuice, 1, nlevels = 5) # reduce nlevels
 #' 
 #' # can be combined with other ggplot2 commands
-#' drawEEMgg(applejuice, 1) + theme_bw() 
+#' # add point to the plot
+#' drawEEMgg(applejuice, 1) + geom_point(aes(x = 350, y = 500), pch = 17, cex = 10)
+#' 
+#' # add grid line to the plot
+#' drawEEMgg(applejuice, 1) + theme(panel.grid = element_line(color = "grey"), 
+#' panel.grid.major = element_line(colour = "grey"))
 #' }
 #' 
 #' @seealso
-#' \code{\link{drawEEM}},\code{\link{drawMultipleEEM}}
+#' \code{\link{drawEEM}}
 #' 
 #'
 #' @import ggplot2

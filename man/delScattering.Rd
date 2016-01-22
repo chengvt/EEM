@@ -24,7 +24,9 @@ delScattering(EEM, rep = 0, first = 30, second = 40, third = 40,
 A list similar to input \code{EEM} is returned but with all scattering rays deleted.
 }
 \description{
-This function deletes two types of rays that are not related to fluorescence emission: (1) regions where emission wavelength is shorten than excitation light, (2) scattering rays and their second, third and forth order lights.
+This function deletes two regions that are not related to fluorescence emission: 
+(1) regions where emission wavelength is shorten than excitation light, 
+(2) scattering rays and their second, third and forth order lights.
 }
 \examples{
 data(applejuice)

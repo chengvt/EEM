@@ -8,7 +8,7 @@
 \usage{
 drawEEMgg(x, ...)
 
-\method{drawEEMgg}{EEM}(x, n, textsize = 25, color.palette = matlab.like,
+\method{drawEEMgg}{EEM}(x, n, textsize = 20, color.palette = matlab.like,
   geom = "path", nlevels = 20, exlab = "Excitation wavelength [nm]",
   emlab = "Emission wavelength [nm]", main = NULL, has_legend = TRUE,
   zlim = NULL, breaks = waiver(), flipaxis = FALSE)
@@ -51,7 +51,7 @@ A figure is returned on the graphic device
 This function draw contour for EEM data using ggplot2. Use `ggsave` to save the contours.
 }
 \details{
-\code{\link{drawEEM}} is faster and should be used. But since it lacks multiple plotting capacity, \code{\link{drawEEMgg}} was created to work with drawMultipleEEM.
+\code{\link{drawEEM}} is faster and should be used.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -69,11 +69,16 @@ drawEEMgg(applejuice, 1, color.palette = cm.colors) # draw EEM of sample no.31 w
 drawEEMgg(applejuice, 1, nlevels = 5) # reduce nlevels
 
 # can be combined with other ggplot2 commands
-drawEEMgg(applejuice, 1) + theme_bw() 
+# add point to the plot
+drawEEMgg(applejuice, 1) + geom_point(aes(x = 350, y = 500), pch = 17, cex = 10)
+
+# add grid line to the plot
+drawEEMgg(applejuice, 1) + theme(panel.grid = element_line(color = "grey"), 
+panel.grid.major = element_line(colour = "grey"))
 }
 
 }
 \seealso{
-\code{\link{drawEEM}},\code{\link{drawMultipleEEM}}
+\code{\link{drawEEM}}
 }
 

@@ -153,6 +153,7 @@ drawEEMgg(applejuice, n = 1)
 ```r
 # all functionalities in ggplot can be applied directly 
 library(ggplot2)
+# add grid line to the plot
 drawEEMgg(applejuice, n = 1) + theme(panel.grid = element_line(color = "grey"), 
                                      panel.grid.major = element_line(colour = "grey"))
 ```
