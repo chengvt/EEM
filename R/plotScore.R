@@ -99,7 +99,7 @@ plotScore <-
             }
             
             # turn into factor if it isn't already
-            if (!is.factor(group2) & is.null(attributes(group2))) {
+            if (!is.factor(group2) & is.null(attributes(group2)$levels)) {
                 group2 <- as.factor(group2)
             }
             numLevels_point <- nlevels(group2)
