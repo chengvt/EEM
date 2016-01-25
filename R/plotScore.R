@@ -83,7 +83,7 @@ plotScore <-
             }
             
             # turn into factor if it isn't already
-            if (!is.factor(group) & is.null(attributes(group))) {
+            if (!is.factor(group) & is.null(attributes(group)$levels)) {
                 group <- as.factor(group)
             }
             numLevels_color <- nlevels(group)
