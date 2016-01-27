@@ -106,7 +106,11 @@ plotScore <-
                 group2 <- as.factor(group2)
             }
             numLevels_point <- nlevels(group2)
-        } 
+        } else if (has_group){
+            # if there is only group supplied, let group2 be group
+            group2 <- group
+            numLevels_point <- nlevels(group2)
+        }
         
         if (is.null(group)) group <- 1
         if (is.null(group2)) group2 <- 1
