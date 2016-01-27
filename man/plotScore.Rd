@@ -77,6 +77,9 @@ plotScore(result, xPC = 1, yPC = 3, group = country, legendoutside = TRUE)
 cultivar <- sapply(strsplit(names(applejuice), split = "-"), "[", 2) 
 plotScore(result, group = country, group2 = cultivar)
 
+# make the points more transparent
+plotScore(result, group = country, group2 = country, col = alpha(generateColor(2), 0.7))
+
 }
 \seealso{
 \code{\link{plotScorem}}
