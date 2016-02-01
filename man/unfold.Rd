@@ -2,12 +2,9 @@
 % Please edit documentation in R/unfold.R
 \name{unfold}
 \alias{unfold}
-\alias{unfold.EEM}
 \title{Unfold EEM list into a matrix}
 \usage{
 unfold(EEM)
-
-\method{unfold}{EEM}(EEM)
 }
 \arguments{
 \item{EEM}{a list containing EEM data as created by \code{readEEM} function.}
