@@ -43,6 +43,16 @@ fold.matrix <- function(EEM_uf){
   return(EEM)
 }
 
+#' @describeIn fold fold unfolded data.frame
+fold.data.frame <- function(EEM_uf){
+    
+    # turn into matrix
+    EEM_uf <- as.matrix(EEM_uf)
+    
+    # use fold.matrix
+    fold.matrix(EEM_uf)
+}
+
 #' @rdname fold
 #' @export
 fold.numeric <- function(EEM_uf){

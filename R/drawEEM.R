@@ -130,40 +130,33 @@ drawEEM.EEMweight <- function(x, ncomp,
     ) 
 }
 
-#' @describeIn drawEEM draw contour of a matrix with columns being 
-#' excitation wavelength and rows being emission wavelength
+#' @describeIn drawEEM draw contour of unfolded matrix which have column names in 
+#' the format of EX...EM...
 #' @export
 drawEEM.matrix <-
-    function(x, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
+    function(x, n, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, main = NULL, flipaxis = FALSE, ...){
-            
-        # get information from x
-        data <- x
-        xlab <- exlab
-        ylab <- emlab
-        if (flipaxis) {
-            data <- t(data)
-            xlab <- emlab
-            ylab <- exlab
-        }
-        X <- as.numeric(colnames(data)) 
-        Y <- as.numeric(rownames(data)) 
-        Z <- t(as.matrix(data))
+        
+        # fold x into EEM 
+        x <- fold(x)
         
         # draw contour
-        filled.contour(X, Y, Z, xlab = xlab, ylab = ylab, 
-                       color.palette = color.palette, 
-                       main = main, nlevels = nlevels, ...) 
+        drawEEM.EEM(x, n = n, exlab = exlab, emlab = emlab, color.palette = color.palette,
+                       nlevels = nlevels, main = main, flipaxis = flipaxis, ...)
     }
 
-#' @describeIn drawEEM draw contour of a data frame with columns being 
-#' excitation wavelength and rows being emission wavelength
+#' @describeIn drawEEM draw contour of unfolded data.frame which have column names in 
+#' the format of EX...EM...
 #' @export
 drawEEM.data.frame <-
-    function(x, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
+    function(x, n, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, main = NULL, flipaxis = FALSE, ...){
-        x <- as.matrix(x)
-        drawEEM.matrix(x, exlab = exlab, emlab = emlab, color.palette = color.palette,
+        
+        # fold x into EEM 
+        x <- fold(x)
+        
+        # draw contour
+        drawEEM.EEM(x, n, exlab = exlab, emlab = emlab, color.palette = color.palette,
                        nlevels = nlevels, main = main, flipaxis = flipaxis, ...)
     }
 
@@ -174,13 +167,10 @@ drawEEM.numeric <-
     function(x, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, main = NULL, flipaxis = FALSE, ...){
         
-        # convert data to matrix form
-        name <- names(x)
-        EX <- getEX(name)
-        EM <- getEM(name)
-        data <- data.frame(ex = as.numeric(EX), em = as.numeric(EM), value = x)
-        data.casted <- acast(data, em ~ ex, value.var = "value")
+        # fold x into EEM 
+        x <- fold(x)
         
-        drawEEM.matrix(data.casted, exlab = exlab, emlab = emlab, color.palette = color.palette,
+        # draw contour
+        drawEEM.matrix(x, n = 1, exlab = exlab, emlab = emlab, color.palette = color.palette,
                        nlevels = nlevels, main = main, flipaxis = flipaxis, ...)
     }

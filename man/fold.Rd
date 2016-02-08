@@ -2,6 +2,7 @@
 % Please edit documentation in R/fold.R
 \name{fold}
 \alias{fold}
+\alias{fold.data.frame}
 \alias{fold.matrix}
 \alias{fold.numeric}
 \title{Fold EEM matrix into a list}
@@ -9,6 +10,8 @@
 fold(EEM_uf)
 
 \method{fold}{matrix}(EEM_uf)
+
+\method{fold}{data.frame}(EEM_uf)
 
 \method{fold}{numeric}(EEM_uf)
 }
@@ -22,6 +25,10 @@ EEM a list containing EEM/EEM data
 \description{
 Fold EEM matrix into a list
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{data.frame}: fold unfolded data.frame
+}}
 \examples{
 data(applejuice)
 applejuice_uf <- unfold(applejuice) # unfold list into matrix

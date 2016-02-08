@@ -19,11 +19,11 @@ drawEEM(x, ...)
   emlab = "Emission wavelength [nm]", color.palette = matlab.like,
   nlevels = 50, main = NULL, flipaxis = FALSE, ...)
 
-\method{drawEEM}{matrix}(x, exlab = "Excitation wavelength [nm]",
+\method{drawEEM}{matrix}(x, n, exlab = "Excitation wavelength [nm]",
   emlab = "Emission wavelength [nm]", color.palette = matlab.like,
   nlevels = 50, main = NULL, flipaxis = FALSE, ...)
 
-\method{drawEEM}{data.frame}(x, exlab = "Excitation wavelength [nm]",
+\method{drawEEM}{data.frame}(x, n, exlab = "Excitation wavelength [nm]",
   emlab = "Emission wavelength [nm]", color.palette = matlab.like,
   nlevels = 50, main = NULL, flipaxis = FALSE, ...)
 
@@ -66,11 +66,11 @@ This function is a wrapper function for \code{\link{filled.contour}} to draw con
 \item \code{EEMweight}: draw contours of the output from \code{\link[EEM]{getLoading}} and 
 \code{\link[EEM]{getReg}}.
 
-\item \code{matrix}: draw contour of a matrix with columns being 
-excitation wavelength and rows being emission wavelength
+\item \code{matrix}: draw contour of unfolded matrix which have column names in 
+the format of EX...EM...
 
-\item \code{data.frame}: draw contour of a data frame with columns being 
-excitation wavelength and rows being emission wavelength
+\item \code{data.frame}: draw contour of unfolded data.frame which have column names in 
+the format of EX...EM...
 
 \item \code{numeric}: draw contour of a vector of numeric values which have names in 
 the format of EX...EM...
