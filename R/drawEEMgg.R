@@ -141,16 +141,15 @@ drawEEMgg_internal <-
                             ylim = c(em.range[1],em.range[2]), expand = FALSE) 
         
         # add some themes to the plot
-        w <- v +           
-            theme(panel.grid = element_blank(),  # delete grid lines 
-                  text = element_text(size = textsize),  # change all text size
-                  panel.background = element_rect(fill = 'white'),  # white bg
-                  panel.border = element_rect(colour = "grey50", fill = NA)) +
+        w <- v +   
             xlab(exlab) +
             ylab(emlab) +
             ggtitle(main) + 
-            theme(legend.title = element_blank(),
-                  panel.border = element_rect(colour = "black"),
+            theme(panel.grid = element_blank(),  # delete grid lines 
+                  text = element_text(size = textsize),  # change all text size
+                  panel.background = element_rect(fill = 'white'),  # white bg +
+                  legend.title = element_blank(),
+                  panel.border = element_rect(colour = "black", fill = NA),
                   axis.text = element_text(colour = "black"),
                   axis.ticks = element_line(colour = "black"),
                   axis.title.x = element_text(vjust = -0.1),
