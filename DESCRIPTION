@@ -14,7 +14,6 @@ Imports:
     graphics,
     colorRamps,
     utils,
-    readxl,
     R.utils,
     sp,
     ggplot2
