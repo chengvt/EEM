@@ -6,7 +6,7 @@
 #' 
 #' @return \code{readEEM} returns a list containing each raw files
 #' 
-#' @details The supported format is outputs from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech), RF-6000 (Shimadzu) and
+#' @details The supported format is *.txt, *.csv and *.dat files from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech), RF-6000 (Shimadzu) and
 #' Aqualog (Horiba) fluorescence spectrometer. 
 #' It is likely that outputs from different machines of the same companies are supported by this function.
 #' Please send a word or pull request to add support for other formats. 
@@ -15,7 +15,6 @@
 #' 
 #' @importFrom utils read.delim
 #' @importFrom tools file_ext file_path_sans_ext
-#' @importFrom readxl read_excel
 #' @importFrom R.utils isDirectory isFile
 readEEM <-
     function(path = NULL){
@@ -27,7 +26,7 @@ readEEM <-
         
         # if folder paths are provided, use them
         if (all(isDirectory(path))) {
-            acceptableFileExtension <- "\\.csv$|\\.txt$|\\.xls$|\\.xlsx$|\\.dat$"
+            acceptableFileExtension <- "\\.csv$|\\.txt$|\\.dat$"
             fileList <- list.files(path = path, pattern = acceptableFileExtension, 
                                    ignore.case = TRUE, full.names = TRUE)
         }
@@ -67,24 +66,14 @@ readSingleEEM <- function(file){
     # check format of file  
     fileExtension <- tolower(file_ext(file))
     
-    # initialize conditions
-    isEXCEL <- FALSE
-    isASCII <- FALSE
-    
-    # check if the file is .xls or .xlsx format
-    if (grepl("xls", fileExtension)) isEXCEL <- TRUE
-    
     # read in the lines 
-    if (isEXCEL) {
-        tmpData <- as.character(read_excel(file)[,1], stringsAsFactors = FALSE)
-    } else {
-        tmpData = readLines(file, warn = FALSE)
-        switch(fileExtension, csv = {SEP <- ","}, txt = {SEP <- ""}, dat = {SEP <- "\t"})
-    }
-    
+    tmpData = readLines(file, warn = FALSE)
+    switch(fileExtension, csv = {SEP <- ","}, txt = {SEP <- ""}, dat = {SEP <- "\t"})
+
     # check if tmpdata contains non ASCII
-    if (sum(grepl("UTF-8|unknown", sapply(tmpData, Encoding))) > 0) isASCII = TRUE
-    if (isASCII) tmpData <- sapply(tmpData, iconv, from = "UTF-8", to = "ASCII", sub = "byte")
+    if (sum(grepl("UTF-8|unknown", sapply(tmpData, Encoding))) > 0) {
+        tmpData <- sapply(tmpData, iconv, from = "UTF-8", to = "ASCII", sub = "byte")
+        }
     
     # check for "EX/EM" (Shimadzu), if present transpose
     if (length(grep("<97><e3><8b>N<94>g<92><b7>/<8c>u<8c><f5><94>g<92><b7>", tmpData)) > 0) {
@@ -111,11 +100,7 @@ readSingleEEM <- function(file){
         }
     }
     # read data
-    if (isEXCEL){
-        # for excel files
-        data_noRowNames <- read_excel(file, skip = index + 1)
-        colnames(data_noRowNames) <- round(as.numeric(colnames(data_noRowNames)))
-    } else {
+
         # for txt or csv files
         data_noRowNames <- read.delim(file, sep = SEP, skip = index, 
                                       check.names = FALSE, row.names = NULL)
@@ -129,8 +114,6 @@ readSingleEEM <- function(file){
                 data_noRowNames <- test
             }
         }
-        
-    }
     
     # output
     data <- as.matrix(data.frame(c(data_noRowNames[,-1]), 

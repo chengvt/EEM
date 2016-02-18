@@ -16,7 +16,7 @@ readEEM(path = NULL)
 Read raw files from fluorescence spectrometer
 }
 \details{
-The supported format is outputs from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech), RF-6000 (Shimadzu) and
+The supported format is *.txt, *.csv and *.dat files from FP-8500 (JASCO), F-7000 (Hitachi Hi-tech), RF-6000 (Shimadzu) and
 Aqualog (Horiba) fluorescence spectrometer. 
 It is likely that outputs from different machines of the same companies are supported by this function.
 Please send a word or pull request to add support for other formats.
