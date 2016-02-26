@@ -22,8 +22,6 @@
 #' plotReg(model) 
 #'  
 #' @export
-#' 
-#' @importFrom reshape2 acast
 
 plotReg <- function(x, ncomp = NULL, ...){
     
