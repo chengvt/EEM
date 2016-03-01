@@ -13,9 +13,9 @@
 print.EEM <- function(x, ...) {
     dimension <- sapply(x, function(y) {DIM <- dim(y)
                                         paste(DIM[1], DIM[2], sep = "x") })
-    EX_range <- sapply(x, function(y) {RANGE <- range(as.numeric(rownames(y))) 
+    EX_range <- sapply(x, function(y) {RANGE <- range(as.numeric(colnames(y))) 
                                         paste(RANGE[1], RANGE[2], sep = "~")})
-    EM_range <- sapply(x, function(y) {RANGE <- range(as.numeric(colnames(y)))
+    EM_range <- sapply(x, function(y) {RANGE <- range(as.numeric(rownames(y)))
                                         paste(RANGE[1], RANGE[2], sep = "~")})
     
     # assign sName to Null if 
