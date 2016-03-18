@@ -59,3 +59,10 @@ getEM <- function(string, digits = NULL){
     }
     return(ex)
 }
+
+#' @export
+c.EEM <- function(..., recursive = FALSE) {
+    r <- NextMethod("c")
+    class(r) <- "EEM"
+    r
+}
