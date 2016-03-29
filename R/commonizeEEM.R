@@ -10,6 +10,9 @@
 #' @export
 commonizeEEM <- function(EEM){
     
+    # get sName
+    sName <- names(EEM)
+    
     # get var names
     getVar <- function(EEM){
         var.full <- expand.grid(em = as.numeric(rownames(EEM)), ex = as.numeric(colnames(EEM)))
@@ -30,5 +33,6 @@ commonizeEEM <- function(EEM){
     }
     colnames(data_uf) <- common_var
     data <- fold(data_uf)
+    names(data) <- sName
     return(data)
 }
