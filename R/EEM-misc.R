@@ -61,8 +61,8 @@ getEM <- function(string, digits = NULL){
 }
 
 #' @export
-c.EEM <- function(..., recursive = FALSE) {
-    r <- NextMethod("c")
-    class(r) <- "EEM"
-    r
+c.EEM <- function(..., recursive = FALSE)  {
+    dots <- list(...)
+    res <- structure(unlist(dots, recursive = FALSE), class = "EEM")
+    return (res)
 }
