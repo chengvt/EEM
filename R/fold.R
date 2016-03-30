@@ -16,11 +16,11 @@
 #' @export
 #' 
 #' @importFrom reshape2 acast
-fold <- function(EEM_uf) UseMethod("fold")
+fold <- function(EEM_uf, ...) UseMethod("fold")
 
 #' @rdname fold
 #' @export
-fold.matrix <- function(EEM_uf){
+fold.matrix <- function(EEM_uf, ...){
     
   # information from EEM_uf
   sName <- rownames(EEM_uf)
@@ -44,10 +44,11 @@ fold.matrix <- function(EEM_uf){
 }
 
 #' @describeIn fold fold unfolded data.frame
-fold.data.frame <- function(EEM_uf){
+fold.data.frame <- function(EEM_uf, name = NULL, ...){
     
     # turn into matrix
     EEM_uf <- as.matrix(EEM_uf)
+    if (!is.null(name)) rownames(EEM_uf) <- name
     
     # use fold.matrix
     fold.matrix(EEM_uf)
@@ -55,7 +56,7 @@ fold.data.frame <- function(EEM_uf){
 
 #' @rdname fold
 #' @export
-fold.numeric <- function(EEM_uf){
+fold.numeric <- function(EEM_uf, ...){
     
     # information from EEM_uf
     var <- names(EEM_uf)
@@ -71,4 +72,14 @@ fold.numeric <- function(EEM_uf){
     # return 
     class(EEM) <- "EEM"
     return(EEM)
+}
+
+#' @export
+fold.tbl_df <- function(EEM_uf, name = NULL, ...){
+    NextMethod()
+}
+
+#' @export
+fold.tbl <- function(EEM_uf, name = NULL, ...){
+    NextMethod()
 }
