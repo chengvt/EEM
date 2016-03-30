@@ -76,10 +76,10 @@ fold.numeric <- function(EEM_uf, ...){
 
 #' @export
 fold.tbl_df <- function(EEM_uf, name = NULL, ...){
-    NextMethod()
+    NextMethod("fold")
 }
 
 #' @export
 fold.tbl <- function(EEM_uf, name = NULL, ...){
-    NextMethod()
+    NextMethod("fold")
 }
