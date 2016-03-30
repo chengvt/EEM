@@ -4,6 +4,7 @@
 #' 
 #' @param EEM_uf Unfolded EEM matrix where columns are wavelength condition and rows are samples.
 #' It should have corresponding column names (formatted as EX###EM###) and row names. 
+#' @param name optional for data.frame input to specify the sample names
 #' 
 #' @return EEM a list containing EEM/EEM data
 #' 
