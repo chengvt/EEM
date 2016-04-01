@@ -45,6 +45,7 @@ fold.matrix <- function(EEM_uf, ...){
 }
 
 #' @describeIn fold fold unfolded data.frame
+#' @export
 fold.data.frame <- function(EEM_uf, name = NULL, ...){
     
     # turn into matrix
