@@ -23,7 +23,7 @@
 #' @export
 
 delScattering <-
-function(EEM, rep = 0, first = 30, second = 40, third = 40, forth = 0 ){
+function(EEM, rep = 0, first = 30, second = 40, third = 40, forth = 40){
   # input: EEM (list), rep: 0 or NA
   
   # make sure that all EEMs has the same dimension
