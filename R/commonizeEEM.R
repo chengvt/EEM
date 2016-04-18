@@ -7,6 +7,14 @@
 #' 
 #' @return EEM class object with only common variables
 #' 
+#' @examples
+#' data(gluten)
+#' data(applejuice)
+#' data <- c(gluten, applejuice)
+#' summary(data) # different dimensions
+#' data_combined <- commonizeEEM(data)
+#' summary(data_combined) # same dimension, ready for unfold
+#' 
 #' @export
 commonizeEEM <- function(EEM){
     

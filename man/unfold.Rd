@@ -4,10 +4,12 @@
 \alias{unfold}
 \title{Unfold EEM list into a matrix}
 \usage{
-unfold(EEM)
+unfold(EEM, replaceNA = TRUE)
 }
 \arguments{
 \item{EEM}{a list containing EEM data as created by \code{readEEM} function.}
+
+\item{replaceNA}{logical value whether to replace NA with 0}
 }
 \value{
 Unfolded EEM matrix where columns are wavelength condition and rows are samples

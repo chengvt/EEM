@@ -3,6 +3,7 @@
 #' Unfold EEM list into a matrix with columns as variables (wavelength conditions) and rows as samples.
 #' 
 #' @param EEM a list containing EEM data as created by \code{readEEM} function.
+#' @param replaceNA logical value whether to replace NA with 0
 #' 
 #' @return Unfolded EEM matrix where columns are wavelength condition and rows are samples
 #' 
@@ -13,7 +14,7 @@
 #' 
 #' @export
 
-unfold <- function(EEM){
+unfold <- function(EEM, replaceNA = TRUE){
         
         ## check that all EEM has the same dimension
         dimMat <- sapply(EEM, dim)
@@ -43,5 +44,9 @@ unfold <- function(EEM){
         
         colnames(EEM_uf) <- var
         rownames(EEM_uf) <- sName
+        
+        # replace NA with 0
+        if (replaceNA) EEM_uf[is.na(EEM_uf)] <- 0
+        
         return(EEM_uf)
     }

@@ -11,6 +11,7 @@
 * `drawEEM ` now supports VIP plotting (for the VIP function available at pls package's main site). 
 * The font size for the group legend box can now be specified using `cex.legend` in `plotScore` function.
 * Add methods for `tbl` object in `fold`
+* Automatically replace NA with 0 in `unfold`
 
 ## Major change
 * No longer support excel file import internally in `readEEM`

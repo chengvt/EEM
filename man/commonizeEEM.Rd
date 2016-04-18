@@ -16,4 +16,13 @@ EEM class object with only common variables
 Smooth out the difference dimensions of EEM data by finding the common variables of all data and subset
 those data.
 }
+\examples{
+data(gluten)
+data(applejuice)
+data <- c(gluten, applejuice)
+summary(data) # different dimensions
+data_combined <- commonizeEEM(data)
+summary(data_combined) # same dimension, ready for unfold
+
+}
 
