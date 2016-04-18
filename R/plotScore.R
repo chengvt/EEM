@@ -55,7 +55,10 @@
 #' plotScore(result, group = country, group2 = cultivar)
 #' 
 #' # make the points more transparent
+#' \dontrun{
+#' require(scales)
 #' plotScore(result, group = country, group2 = country, col = alpha(generateColor(2), 0.7))
+#' }
 #' 
 #' @importFrom graphics abline legend par plot points text
 #' @export
@@ -66,7 +69,7 @@ plotScore <-
              legendlocation = "bottomright",
              legendoutside = FALSE,
              rightwhitespace = 0,
-             legendinset = 0, ...){
+             ...){
         
         # check if group information is provided
         has_group <- !is.null(group)

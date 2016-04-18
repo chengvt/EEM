@@ -5,7 +5,7 @@
 \title{Delete scattering rays}
 \usage{
 delScattering(EEM, rep = 0, first = 30, second = 40, third = 40,
-  forth = 0)
+  forth = 40)
 }
 \arguments{
 \item{EEM}{A list containing EEM data as created by \code{\link{readEEM}} function.}

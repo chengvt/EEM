@@ -7,7 +7,7 @@
 plotScore(prcompResult, xPC = 1, yPC = 2, group = NULL, group2 = NULL,
   cex = 1.5, cex.legend = 1, label = NULL, pos = 4, col = NULL,
   pch = NULL, legendlocation = "bottomright", legendoutside = FALSE,
-  rightwhitespace = 0, legendinset = 0, ...)
+  rightwhitespace = 0, ...)
 }
 \arguments{
 \item{prcompResult}{output object from \code{\link[stats]{prcomp}} function}
@@ -78,7 +78,10 @@ cultivar <- sapply(strsplit(names(applejuice), split = "-"), "[", 2)
 plotScore(result, group = country, group2 = cultivar)
 
 # make the points more transparent
+\dontrun{
+require(scales)
 plotScore(result, group = country, group2 = country, col = alpha(generateColor(2), 0.7))
+}
 
 }
 \seealso{

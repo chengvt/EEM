@@ -44,7 +44,7 @@ delScattering2 <-
         
         # set index for regions that fell into 1st~2th scattering
         for (i in 1:2){
-            increment <- switch(i, first, second, third, forth)
+            increment <- switch(i, first, second)
             plusInd <- i * Ex_grid + increment > Em_grid
             minusInd <- i * Ex_grid - increment < Em_grid
             tempInd <- plusInd & minusInd

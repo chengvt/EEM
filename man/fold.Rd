@@ -19,6 +19,8 @@ fold(EEM_uf, ...)
 \item{EEM_uf}{Unfolded EEM matrix where columns are wavelength condition and rows are samples.
 It should have corresponding column names (formatted as EX###EM###) and row names.}
 
+\item{...}{arguments for other methods}
+
 \item{name}{optional for data.frame input to specify the sample names}
 }
 \value{
