@@ -1,4 +1,4 @@
-# EEM v1.0.4.9000 (master branch)
+# EEM v1.1
 ## New features
 * Add support for Aqualog .dat file
 * Add `delScattering2` function
