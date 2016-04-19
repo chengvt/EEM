@@ -69,6 +69,7 @@ This function draw contour for EEM data using ggplot2. Use `ggsave` to save the 
 \examples{
 \dontrun{
 require(EEM)
+require(ggplot2)
 data(applejuice)
 drawEEMgg(applejuice, 1) # draw EEM of sample no.1
 drawEEMgg(applejuice, 1, color.palette = cm.colors) # draw EEM of sample no.31 with different color
