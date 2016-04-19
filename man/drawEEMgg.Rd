@@ -75,6 +75,9 @@ drawEEMgg(applejuice, 1) # draw EEM of sample no.1
 drawEEMgg(applejuice, 1, color.palette = cm.colors) # draw EEM of sample no.31 with different color
 drawEEMgg(applejuice, 1, nlevels = 10) # change nlevels
 
+# manually define legend values
+drawEEMgg(applejuice, 1, breaks = seq(from = 1000, to = 6000, by = 1000))
+
 # can be combined with other ggplot2 commands
 # add point to the plot
 drawEEMgg(applejuice, 1) + geom_point(aes(x = 350, y = 500), pch = 17, cex = 10)
@@ -82,6 +85,11 @@ drawEEMgg(applejuice, 1) + geom_point(aes(x = 350, y = 500), pch = 17, cex = 10)
 # add grid line to the plot
 drawEEMgg(applejuice, 1) + theme(panel.grid = element_line(color = "grey"), 
 panel.grid.major = element_line(colour = "grey"))
+
+# add bg color
+drawEEMgg(applejuice, 1, has_legend = FALSE) + geom_raster(aes(fill = value)) +
+geom_contour(colour = "white")
+
 }
 
 }
