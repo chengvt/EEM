@@ -150,9 +150,12 @@ drawEEMgg_internal <-
         ex.range <- range(x$ex, na.rm = TRUE)
         em.range <- range(x$em, na.rm = TRUE)
         if (is.null(zlim)) zlim <- range(x$value, na.rm = TRUE)
-
+        
+        # applease cran check
+        ..level.. <- NULL
+        
         # create ggplot
-        v <- ggplot(x, aes(x = ex, y = em, z = value)) + 
+        v <- ggplot(x, aes_string(x = "ex", y = "em", z = "value")) + 
             geom_contour(aes(colour = ..level..), bins = nlevels) +
             scale_colour_gradientn(colours = color.palette(nlevels), limits = c(zlim[1], zlim[2]), breaks = breaks) +
             coord_cartesian(xlim = c(ex.range[1],ex.range[2]),
