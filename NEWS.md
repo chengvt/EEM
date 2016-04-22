@@ -1,4 +1,8 @@
-# EEM v1.1.0.9000 (master branch)
+# EEM v1.1.1.9000 (master branch)
+
+# EEM v1.1.1
+## Minor change
+* fix CRAN check's notes on ggplot2
 
 # EEM v1.1.0
 ## New features

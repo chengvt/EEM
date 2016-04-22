@@ -1,8 +1,8 @@
 Package: EEM
 Type: Package
 Title: Read and Preprocess Fluorescence Excitation-Emission Matrix (EEM) Data
-Version: 1.1.1
-Date: 2016-04-21
+Version: 1.1.1.9000
+Date: 2016-04-22
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
 Description: Read raw EEM data and prepares them for further analysis.
