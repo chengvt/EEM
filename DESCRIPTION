@@ -2,7 +2,7 @@ Package: EEM
 Type: Package
 Title: Read and Preprocess Fluorescence Excitation-Emission Matrix (EEM) Data
 Version: 1.1.1.9000
-Date: 2016-04-22
+Date: 2016-04-26
 Author: Vipavee Trivittayasil
 Maintainer: Vipavee Trivittayasil <vipavee.tri@gmail.com>
 Description: Read raw EEM data and prepares them for further analysis.
@@ -16,7 +16,8 @@ Imports:
     utils,
     R.utils,
     sp,
-    ggplot2
+    ggplot2,
+    gridExtra
 Suggests:
     stats,
     pls,
@@ -25,4 +26,5 @@ Suggests:
 VignetteBuilder: knitr
 License: GPL-3
 URL: https://github.com/chengvt/EEM
+BugReports: https://github.com/chengvt/EEM/issues
 RoxygenNote: 5.0.1
