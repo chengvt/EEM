@@ -10,7 +10,7 @@ opts_chunk$set(fig.width=6.5, fig.height=4)
 ```
 
 # Introduction to EEM package
-edited on 2016.01.22
+Last edited on 2016.05.13
 
 ## Table of contents
 
@@ -19,6 +19,11 @@ edited on 2016.01.22
 - [Visualizing EEM data](#visualize)
     - [`drawEEM`](#drawEEM)
     - [`drawEEMgg`](#drawEEMgg)
+    - [`drawMultipleEEM`](#drawMultipleEEM)
+- [Methods for EEM objects]
+    - [Joining data](#commonize)
+    - [Combining data of different dimensions](#combine)
+    - [Applying functions on EEM objects](#applyEEM)
 - [Preprocessing EEM data](#preprocess)
     - [Delete Rayleign scattering rays](#delScattering) 
         - [`delScattering`](#delScattering1)
@@ -30,13 +35,15 @@ edited on 2016.01.22
 - [Analyzing EEM data in R](#analyze)
     - [Principle Component Analysis (PCA)](#pca)
     - [Partial least-squares (PLS) regression](#pls)
+- [Misc]
+    - [converting objects between EEM and eemR package](#eemlist2EEM)
 - [References](#ref)
 
 ## <a name="intro"></a>Introduction
-Fluorescence fingerprint or more commonly known as complete fluorescence excitation-emission matrix (EEM) is a 3-dimensional data consisting of excitation, emission and intensity axis. The multi-dimension set EEM data apart from other signal processing. Thus, `EEM` package was developed to facilitate data analysis in R. Basic tools for importing raw data files, deleting Rayleigh scattering rays, unfolding 3-dimensional to 2-dimentional matrix (and vice versa) for further multivariate analysis, and visualizing data are provided in this package. The author has intended this package to be used as a bridge between raw data files and other analysis tools. 
+Fluorescence fingerprint or more commonly known as complete fluorescence excitation-emission matrix (EEM) is a 3-dimensional data consisting of excitation, emission and intensity axis. The multi-dimension set EEM data apart from other signal processing. Thus, `EEM` package was developed to facilitate data import and analysis in R. Basic tools for importing raw data files, deleting Rayleigh scattering rays, unfolding 3-dimensional to 2-dimentional matrix (and vice versa) for further multivariate analysis, visualizing data, etc. are provided in this package. The author has intended this package to be used as a bridge between raw data files and other analysis packages. 
 
 ## <a name="import"></a>Importing raw data files
-`readEEM` function can read raw data files into R. Currently the supported raw data files are limited to certain fluorescence spectrometers (see `?readEEM` or [impoting raw files vignette](https://github.com/chengvt/EEM/blob/master/vignettes/file-io.md) for more details). Basically `readEEM` will look for a certain keyword in raw files and start to read in the lines below them. Please send a word or pull request to add support for other formats. 
+`readEEM` function can read raw data files into R. Currently the supported raw data files are limited to certain fluorescence spectrometers (see `?readEEM` or [importing raw files vignette](https://github.com/chengvt/EEM/blob/master/vignettes/file-io.md) for more details). Basically `readEEM` will look for a certain keyword in raw files and start to read in the lines below them. Please send a word or pull request to add support for other formats. 
 
 Raw data files can be imported using any of the commands below. It can accept both file and folder path. Multiple paths can be specified using a vector. 
 
@@ -50,7 +57,7 @@ data <-readEEM(c("sample1.txt", "sample2.txt")) # read in two files
 
 # read raw data files from a folder
 data <- readEEM(folder) 
-data <-readEEM("C:\\data") # full path. Note that the slash is doubled.
+data <- readEEM("C:\\data") # full path. Note that the slash is doubled.
 data <- readEEM("C:/data") # read in all files in data folder. Aside from double slashes,
                            # a reverted slash can also be used. 
 
@@ -59,13 +66,19 @@ setwd(choose.dir()) # set working folder interactively (only work in windows)
 data <- readEEM(getwd()) # read raw data files in current working folder
 ```
 
-The data is imported as a `list` and was given a class name of `EEM`. The original file names are can be retrieved using `names(EEM)`, and additional information can be obtained using `summary(data)`. 
+The data is imported as a `list` and was given a class name of `EEM`. The original file names are can be retrieved using `names(EEM)`, and additional information can be obtained using `summary(data)`. In each list element, there is a matrix where row names are numerical value specifying emission wavelength and column names are excitation wavelength. The values are intensities at each combination of excitation and emission wavelength. 
 
-For demonstation purpose, a dataset called "applejuice" is attached with the package. It can be called by `data(applejuice)`. More information about the dataset can be accessed by `?applejuice`. 
+```{r}
+# load data
+data(applejuice)
+
+# peek inside the list
+applejuice[[1]][1:5, 1:5]
+```
+
+For demonstation purpose, an "applejuice" dataset is attached with the package. It can be called by `data(applejuice)`. More information about the dataset can be accessed by `?applejuice`. 
 
 ```{r loadData}
-# load dataset
-data(applejuice) 
 class(applejuice) # EEM class
 
 # get sample names
@@ -75,9 +88,8 @@ names(applejuice)
 summary(applejuice)
 ```
 
-
 ## <a name="visualize"></a>Visualizing EEM data
-EEM data is usually visualized using a contour representation. Two functions are available for creating contours. 
+EEM data is usually visualized using a contour representation. The functions for creating contours easily for `EEM` class object are explained below. 
 
 ### <a name="drawEEM"></a>drawEEM
 `drawEEM` is built based on `filled.contour` of `graphics` package and can be used to draw any sample of an `EEM` class object. 
@@ -109,6 +121,48 @@ library(ggplot2)
 drawEEMgg(applejuice, n = 1) + theme(panel.grid = element_line(color = "grey"), 
                                      panel.grid.major = element_line(colour = "grey"))
 ```
+
+### <a name="drawMultipleEEM"></a>drawMultipleEEM
+`drawMultipleEEM` draws all elements in an `EEM` object. 
+
+```{r}
+# draw sample 1 to 6
+drawMultipleEEM(applejuice[1:6]) 
+
+# make three columns instead
+drawMultipleEEM(applejuice[1:6], ncol = 3) 
+```
+
+## Methods for EEM object
+
+### <a name="commonize"></a>Joining data
+`c.EEM` is provided to provide an easier way to combine EEM datasets.
+
+```{r}
+# call another set of data
+data(gluten)
+
+# combine with applejuice data
+combined_data <- c(gluten, applejuice)
+class(combined_data)
+```
+
+### <a name="combine"></a>Combining data of different dimensions
+
+Sometimes, it is possible to have some raw data files with different dimensions of wavelength. For example, the first file may contain emission wavelength from 200 to 900 nm, while another file contains emission wavelength from 300 to 500 nm. The import function `readEEM` has no problems with data of different dimensions. However, this is not tolerated by `unfold` which requires all objects in EEM object have the same dimensions. This can be solved by applying `commonizeEEM` prior to `unfold`.
+
+```{r}
+summary(combined_data) # different dimensions
+data_combined <- commonizeEEM(combined_data)
+summary(data_combined) # same dimension, ready for unfold
+```
+
+The basic idea is that `commonizeEEM` will only select the common variables of all data in EEM object. The figure below illustrates how `commonizeEEM` select only the common region.
+
+![](photos/commonize.png)
+
+### <a name="applyEEM"></a> Applying functions on EEM object
+`applyEEM` can be used to apply basic functions to all numeric elements. The merit of this function is that it will unfold the EEM object, apply the function, and fold it back into EEM object. Some recommended usages are logarithmatic and arithmetic  transformation.
 
 ## <a name="preprocess"></a>Preprocessing EEM data
 Raw EEM data typically requires data cleaning, although some recent machines produced thoroughly cleaned data. Many papers (Fujita et al. (2010), Murphy et al. (2013)) have already discussed about the methods for cleaning and processing EEM data. 
@@ -258,6 +312,9 @@ model <- plsr(gluten_ratio ~ gluten_uf, ncomp = 3)
 plotLoading(model, ncomp = 3)
 plotReg(model) 
 ```
+
+## <a name="eemlist2EEM"></a>Converting objects between EEM and eemR package(#eemlist2EEM)
+`eemlist2EEM` converts from `eemlist` object of [eemR package](https://cran.r-project.org/web/packages/eemR/index.html) into `EEM` object of EEM package. `EEM2eemlist` does vice versa.
 
 ## <a name="ref"></a>References
 Fujita, K., Tsuta, M., Kokawa, M., & Sugiyama, J. (2010). Detection of deoxynivalenol using fluorescence excitation-emission matrix. Food and Bioprocess Technology, 3(6), 922-927.
