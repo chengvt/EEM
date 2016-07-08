@@ -4,7 +4,7 @@
 
 ## Key features 
 * **Raw data import**
-  - Hitachi Hi-tech, JASCO, Shimadzu and Horiba Aqualog in any of the .txt, .csv, .xls, .xlsx, .dat formats are currently supported.
+  - Hitachi Hi-tech, JASCO, Shimadzu and Horiba Aqualog in any of the .txt, .csv, .dat formats are currently supported.
   - For unsupported formats, please refer to [importing raw files](vignettes/file-io.md) or send request. 
 * **Visualize EEM in a contour**
   - ([example1](vignettes/figure/drawEEM-1.png), [example2: flipped axis](vignettes/figure/drawEEM-3.png))
