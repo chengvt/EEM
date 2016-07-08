@@ -65,7 +65,7 @@ If the working folder which contains raw data files has already been set,
 `readEEM(".")` or `readEEM(getwd())` can be used to access them directly. 
 
 #### <a name="howworks"></a>How it works
-`readEEM` first checks the extensions of a file or all files in the folder. The acceptable extensions are \*.csv, \*.txt, \*.xls, \*.xlsx, and \*.dat. It will not read in the files whose extensions are not in the list. It will then check the formats of each files (see next section on company-specific formats). The files whose format is not supported by `readEEM` will not be read in. 
+`readEEM` first checks the extensions of a file or all files in the folder. The acceptable extensions are \*.csv, \*.txt, and \*.dat. It will not read in the files whose extensions are not in the list. It will then check the formats of each files (see next section on company-specific formats). The files whose format is not supported by `readEEM` will not be read in. 
 
 The method that `readEEM` uses to check the file format is to look out for a certain keyword which is located just above the raw data. The formats of different companies are very similar except for the number of filler lines at the top. `readEEM` will look for a keyword which signals the end of the filler lines and the start of raw data. 
 
