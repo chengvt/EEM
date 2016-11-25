@@ -105,7 +105,7 @@ drawEEM.EEMweight <- function(x, ncomp,
     if (is.null(main)) {
         main <- x$title # if title is not provided, call it
         main <- paste(main, ncomp)
-        if (x$title %in% c("Regression coefficient", "VIP")) {
+        if (x$title %in% c("Regression coefficient", "VIP", "SR")) {
             main <- paste0(x$title, " (", ncomp, " LV)")
             if (ncomp > 1) main <- sub("LV", "LVs", main)
         } else {
