@@ -43,6 +43,9 @@ drawEEM.EEM <-
   function(x, n, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
            color.palette = matlab.like, nlevels = 50, main = NULL, flipaxis = FALSE, ...){
     
+    # make canvas bigger
+    par(mar = c(5, 4.2, 4, 2) + 0.1)
+    
     # check number of argument
     if (nargs() < 2) stop("Not enough inputs. Aborted")
     
@@ -69,6 +72,9 @@ drawEEM.EEM <-
     filled.contour(X, Y, Z, xlab = xlab, ylab = ylab, 
                    color.palette = color.palette, 
                    main = main, nlevels = nlevels, ...) 
+    
+    # reset canvas
+    par(mar = c(5, 4, 4, 2) + 0.1)
   }
 
 #' @describeIn drawEEM draw contours of the output from \code{\link[EEM]{getLoading}} and 
@@ -78,6 +84,8 @@ drawEEM.EEMweight <- function(x, ncomp,
                        exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
                        color.palette = matlab.like, nlevels = 50, main = NULL, flipaxis = FALSE,
                        ...){
+  # make canvas bigger
+  par(mar = c(5, 4.2, 4, 2) + 0.1)
     
 #     # transpose if not in correct form
 #     if (!isTRUE(grepl("EX...EM...", rownames(x$value)[1]))) {
@@ -105,7 +113,7 @@ drawEEM.EEMweight <- function(x, ncomp,
     if (is.null(main)) {
         main <- x$title # if title is not provided, call it
         main <- paste(main, ncomp)
-        if (x$title %in% c("Regression coefficient", "VIP")) {
+        if (x$title %in% c("Regression coefficient", "VIP", "SR")) {
             main <- paste0(x$title, " (", ncomp, " LV)")
             if (ncomp > 1) main <- sub("LV", "LVs", main)
         } else {
@@ -130,6 +138,9 @@ drawEEM.EEMweight <- function(x, ncomp,
                    color.palette = color.palette, 
                    nlevels = nlevels, main = main, ...    
     ) 
+    
+    # reset canvas
+    par(mar = c(5, 4, 4, 2) + 0.1)
 }
 
 #' @describeIn drawEEM draw contour of unfolded matrix which have column names in 
@@ -138,7 +149,7 @@ drawEEM.EEMweight <- function(x, ncomp,
 drawEEM.matrix <-
     function(x, n, exlab = "Excitation wavelength [nm]", emlab = "Emission wavelength [nm]", 
              color.palette = matlab.like, nlevels = 50, main = NULL, flipaxis = FALSE, ...){
-        
+      
         # fold x into EEM 
         x <- fold(x)
         
