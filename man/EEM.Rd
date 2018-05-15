@@ -14,4 +14,3 @@ analysis
 \details{
 The latest version and documentation can be found \href{https://github.com/chengvt/EEM}{here}.
 }
-

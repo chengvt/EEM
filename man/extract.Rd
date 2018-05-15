@@ -26,4 +26,3 @@ result <- prcomp(applejuice_uf)
 loading <- getLoading(result)
 str(loading)
 }
-

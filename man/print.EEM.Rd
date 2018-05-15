@@ -19,4 +19,3 @@ data(applejuice)
 print(applejuice)
 
 }
-

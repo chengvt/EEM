@@ -21,4 +21,3 @@ data(applejuice)
 selected <- applejuice[1-5]
 
 }
-

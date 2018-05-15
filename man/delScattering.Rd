@@ -37,4 +37,3 @@ drawEEM(delScattering(applejuice, NA), 1)
 Fujita, K., Tsuta, M., Kokawa, M., and Sugiyama, J. (2010). Detection of deoxynivalenol using fluorescence excitation--emission matrix. Food and Bioprocess Technology, 3(6), 922--927.
 }
 \keyword{scattering}
-

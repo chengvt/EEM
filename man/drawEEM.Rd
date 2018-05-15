@@ -4,8 +4,8 @@
 \alias{drawEEM}
 \alias{drawEEM.EEM}
 \alias{drawEEM.EEMweight}
-\alias{drawEEM.data.frame}
 \alias{drawEEM.matrix}
+\alias{drawEEM.data.frame}
 \alias{drawEEM.numeric}
 \title{Draw contour for EEM data}
 \usage{
@@ -75,6 +75,7 @@ the format of EX...EM...
 \item \code{numeric}: draw contour of a vector of numeric values which have names in 
 the format of EX...EM...
 }}
+
 \examples{
 # method for class "EEM"
 data(applejuice)
@@ -90,4 +91,3 @@ drawEEM(getLoading(result), 1) # plot loading of the first PC
 \seealso{
 \code{\link{drawEEM}}
 }
-

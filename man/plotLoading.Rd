@@ -26,4 +26,3 @@ result <- prcomp(applejuice_uf)
 plotLoading(result, ncomp = 1) # plot loading of the first PC
  
 }
-

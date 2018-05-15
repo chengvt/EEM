@@ -36,4 +36,3 @@ lapply(applejuice, "min")
 # use lapply instead of applyEEM when the returned output is not EEM class structure
 
 }
-

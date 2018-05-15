@@ -25,4 +25,3 @@ data_combined <- commonizeEEM(data)
 summary(data_combined) # same dimension, ready for unfold
 
 }
-

@@ -33,4 +33,3 @@ model <- plsr(gluten_ratio ~ gluten_uf, ncomp = 3)
 plotReg(model) 
  
 }
-

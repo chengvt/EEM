@@ -48,4 +48,3 @@ plotScorem(result, ncomp = 4, group = country, col = c("black", "grey"))
 \seealso{
 \code{\link{pairs}}, \code{\link{plotScore}}
 }
-

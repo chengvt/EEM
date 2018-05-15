@@ -30,4 +30,3 @@ drawEEM(delScattering2(applejuice, NA), 1)
 
 }
 \keyword{scattering}
-

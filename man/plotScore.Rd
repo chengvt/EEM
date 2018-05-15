@@ -87,4 +87,3 @@ plotScore(result, group = country, group2 = country, col = alpha(generateColor(2
 \seealso{
 \code{\link{plotScorem}}
 }
-

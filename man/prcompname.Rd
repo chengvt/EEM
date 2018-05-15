@@ -26,4 +26,3 @@ result <- prcomp(applejuice_uf)
 prcompname(result, 1)
 
 }
-

@@ -36,4 +36,3 @@ drawMultipleEEM(applejuice[1:5]) # draw contour of the first to the fifth sample
 \seealso{
 \code{\link{drawEEM}},\code{\link{drawEEMgg}}
 }
-

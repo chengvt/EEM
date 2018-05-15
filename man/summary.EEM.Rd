@@ -22,4 +22,3 @@ data(applejuice)
 summary(applejuice)
 
 }
-

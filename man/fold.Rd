@@ -2,8 +2,8 @@
 % Please edit documentation in R/fold.R
 \name{fold}
 \alias{fold}
-\alias{fold.data.frame}
 \alias{fold.matrix}
+\alias{fold.data.frame}
 \alias{fold.numeric}
 \title{Fold EEM matrix into a list}
 \usage{
@@ -33,6 +33,7 @@ Fold EEM matrix into a list
 \itemize{
 \item \code{data.frame}: fold unfolded data.frame
 }}
+
 \examples{
 data(applejuice)
 applejuice_uf <- unfold(applejuice) # unfold list into matrix
@@ -40,4 +41,3 @@ applejuice_uf_norm <- normalize(applejuice_uf) # normalize matrix
 drawEEM(fold(applejuice_uf_norm), 1) # visualize normalized EEM
 
 }
-

@@ -2,10 +2,10 @@
 % Please edit documentation in R/EEM-misc.R
 \name{EEM-misc}
 \alias{EEM-misc}
-\alias{generateColor}
 \alias{generatePoint}
-\alias{getEM}
+\alias{generateColor}
 \alias{getEX}
+\alias{getEM}
 \title{Internal functions for EEM package}
 \usage{
 generatePoint(n, pch = NULL)

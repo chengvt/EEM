@@ -27,4 +27,4 @@ VignetteBuilder: knitr
 License: GPL-3
 URL: https://github.com/chengvt/EEM
 BugReports: https://github.com/chengvt/EEM/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

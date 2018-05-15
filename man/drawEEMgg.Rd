@@ -2,9 +2,9 @@
 % Please edit documentation in R/drawEEMgg.R
 \name{drawEEMgg}
 \alias{drawEEMgg}
+\alias{drawEEMgg_internal}
 \alias{drawEEMgg.EEM}
 \alias{drawEEMgg.EEMweight}
-\alias{drawEEMgg_internal}
 \title{Draw contour for EEM data using ggplot2}
 \usage{
 drawEEMgg(x, ...)
@@ -66,6 +66,7 @@ This function draw contour for EEM data using ggplot2. Use `ggsave` to save the 
 \item \code{EEMweight}: draw contours of the output from \code{\link[EEM]{getLoading}} and 
 \code{\link[EEM]{getReg}}.
 }}
+
 \examples{
 \dontrun{
 require(EEM)
@@ -96,4 +97,3 @@ geom_contour(colour = "white")
 \seealso{
 \code{\link{drawEEM}}
 }
-

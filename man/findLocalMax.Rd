@@ -45,6 +45,7 @@ Find local maximum peaks in EEM data
 \item \code{numeric}: for a vector of numeric values which have names in 
 the format of EX...EM...
 }}
+
 \examples{
 data(applejuice)
 findLocalMax(applejuice, 1) 
@@ -53,4 +54,3 @@ applejuice_uf <- unfold(applejuice)
 findLocalMax(applejuice_uf, 1) 
 
 }
-

@@ -23,4 +23,3 @@ applejuice_uf <- unfold(applejuice) # unfold list into matrix
 dim(applejuice_uf) # dimension of unfolded matrix
 
 }
-

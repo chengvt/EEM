@@ -34,4 +34,3 @@ applejuice_cut <- cutEEM(applejuice, cutEX = 300:450)
 drawEEM(applejuice_cut, 1)
 
 }
-

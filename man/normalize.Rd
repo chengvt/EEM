@@ -32,4 +32,3 @@ rowSums(abs(applejuice_uf_norm), na.rm = TRUE) # the absolute sum of each row eq
 
   
 }
-

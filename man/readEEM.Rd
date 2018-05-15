@@ -21,4 +21,3 @@ Aqualog (Horiba) fluorescence spectrometer.
 It is likely that outputs from different machines of the same companies are supported by this function.
 Please send a word or pull request to add support for other formats.
 }
-
