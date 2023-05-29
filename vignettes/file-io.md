@@ -102,7 +102,7 @@ Note that `row.names` was used to specify that the row names exist and they are 
 
 ```r
 library(readxl)
-datamatrix <- read_excel("datamatrix.csv")
+datamatrix <- read_excel("datamatrix.xlsx")
 datamatrix[1:5,1:5] # check the first 5 rows and columns
 ```
 
